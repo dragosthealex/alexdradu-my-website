@@ -5,6 +5,37 @@
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{ asset('plugins/vegas/vegas.min.css') }}">
 <style>
+.header {
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+}
+.header .navbar {
+  border-radius: 0;
+  background-color: rgba(0,0,0,0);
+  border: none;
+  transition: all 0.4s ease-in;
+}
+.header .navbar .navbar-brand,
+.header .navbar ul > li > a {
+  color: #fefefe;
+  transition: all 0.4s ease-in;
+}
+.header .navbar .navbar-brand:hover,
+.header .navbar ul > li > a:hover {
+  color: #e0e0e0;
+}
+.header.sticky .navbar {
+  background-color: rgba(255,255,255,0.8);
+  box-shadow: -3px 0px 5px 1px rgba(0,0,0,0.3);
+  transition: all 0.4s ease-in;
+}
+.header.sticky .navbar .navbar-brand,
+.header.sticky .navbar ul > li > a {
+  color: #333;
+  transition: all 0.4s ease-in;
+}
+
 #main-content {
     margin: 0;
     padding: 0;
@@ -37,21 +68,44 @@ section#landing-section {
 @endsection
 
 @section('content')
-<section class="full-height landing" id="landing-section">
+<section class="section full-height landing" id="landing-section">
     <h1 class="hero-text">Coming soon...</h1>
+</section>
+<section class="section" id="projects-section">
+  <h1>blah blah blah</h1>
 </section>
 @endsection
 
 @section('post-scripts')
 <script src="{{ asset('plugins/vegas/vegas.min.js') }}"></script>
 <script>
-$("#landing-section").vegas({
-    slides: [
-        { src: "{{ asset('img/bg/landing-1.jpg') }}" },
-        { src: "{{ asset('img/bg/landing-2.jpg') }}" },
-        { src: "{{ asset('img/bg/landing-3.jpg') }}" },
-        { src: "{{ asset('img/bg/landing-4.jpg') }}" }
-    ],
+$(document).ready(function() {
+  // Called every time window is resized
+  var calledOnResize = function() {
+    $("#landing-section").css("height", $(window).height());
+  },
+  init = function() {
+    // Lander slider
+    $("#landing-section").vegas({
+        slides: [
+            { src: "{{ asset('img/bg/landing-1.jpg') }}" },
+            { src: "{{ asset('img/bg/landing-2.jpg') }}" },
+            { src: "{{ asset('img/bg/landing-3.jpg') }}" },
+            { src: "{{ asset('img/bg/landing-4.jpg') }}" }
+        ],
+    });
+    // Sticky class to navbar
+    $(window).scroll(function() {
+      if($(window).scrollTop() > 0) {
+        $("#main-header").addClass('sticky');
+      } else {
+        $("#main-header").removeClass('sticky');
+      }
+    });
+  };
+  $(window).resize(calledOnResize);
+  init();
 });
+
 </script>
 @endsection
