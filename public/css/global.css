@@ -1,8 +1,28 @@
+@font-face {
+  font-family: 'helvetica_neue';
+  src: url('helveticaneue-extended-webfont.woff2') format('woff2'),
+       url('helveticaneue-extended-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html {
   min-height: 100%;
 }
 body {
   min-height: 100%;
-  font-family: 'Helvetica';
-  background-color: #fefefe;
+  font-family: 'helvetica_neue', sans-serif;
+  background-color: #f1f1f1;
+}
+.header .navbar ul > li > a {
+  font-size: 16px;
+}
+.section.full-height {
+  min-height: 100vh;
+}
+.section.padding {
+  padding: 50px 0;
+}
+.section .section-title {
+  text-align: center;
 }

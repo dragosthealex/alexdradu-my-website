@@ -4,6 +4,7 @@
 
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{ asset('plugins/vegas/vegas.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/global.css') }}">
 <style>
 .header {
   position: fixed;
@@ -26,7 +27,7 @@
   color: #e0e0e0;
 }
 .header.sticky .navbar {
-  background-color: rgba(255,255,255,0.8);
+  background-color: rgba(255,255,255,0.99);
   box-shadow: -3px 0px 5px 1px rgba(0,0,0,0.3);
   transition: all 0.4s ease-in;
 }
@@ -41,9 +42,7 @@
     padding: 0;
     width: 100%;
 }
-section.full-height {
-    height: 100vh;
-}
+
 section#landing-section {
     overflow: hidden;
 }
@@ -55,7 +54,7 @@ section#landing-section {
     -moz-filter: filter(value);
     -o-filter: filter(value);
     -ms-filter: filter(value);
-    filter: blur(4px) brightness(0.75);
+    filter: blur(4px) brightness(0.6);
 }
 .hero-text {
     margin-top: 200px;
@@ -68,11 +67,13 @@ section#landing-section {
 @endsection
 
 @section('content')
-<section class="section full-height landing" id="landing-section">
+<section class="section full-height full-width landing" id="landing-section">
     <h1 class="hero-text">Coming soon...</h1>
 </section>
-<section class="section" id="projects-section">
-  <h1>blah blah blah</h1>
+<section class="section padding full-width full-height" id="projects-section">
+  <div class="container-fluid">
+    <h1 class="section-title">Projects</h1>
+  </div>
 </section>
 @endsection
 
