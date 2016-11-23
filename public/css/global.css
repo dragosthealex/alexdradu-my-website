@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'helvetica_neue';
-  src: url('helveticaneue-extended-webfont.woff2') format('woff2'),
-       url('helveticaneue-extended-webfont.woff') format('woff');
+  src: url('../fonts/helveticaneue-extended-webfont.woff2') format('woff2'),
+       url('../fonts/helveticaneue-extended-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
