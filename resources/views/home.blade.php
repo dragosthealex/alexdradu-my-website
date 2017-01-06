@@ -60,14 +60,17 @@ section#landing-section {
 .landing .container .text {
   float: left;
   margin-left: 20px;
+  max-width: 200px;
 }
 .landing .container .title {
   font-family: 'helvetica_neue', sans-serif;
   margin-top: 45px;
+  text-transform: capitalize;
 }
 .landing .container .subtitle {
   font-family: 'Open Sans', sans-serif;
   margin-bottom: 25px;
+  text-transform: capitalize;
 }
 .landing .container .profile-img {
   width: 200px;
@@ -259,7 +262,7 @@ section#landing-section {
           <div class="text">
             <h1 class="title">Alex Radu</h1>
             <h4 class="subtitle">Software Engineer</h4>
-            <h5 class="quote">Anything is possible with enough<br>determination</h5>
+            <h5 class="quote">Anything is possible with enough determination</h5>
           </div>
         </div>
       </div>
