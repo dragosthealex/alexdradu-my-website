@@ -27,6 +27,6 @@ class CreateProjectTagsTable extends Migration
      */
     public function down()
     {
-        Schema:drop('project_tag');
+        Schema::drop('project_tag');
     }
 }

@@ -11,7 +11,7 @@ class Tag extends Model
    *
    * @var string
    */
-   protected $table = 'settings';
+   protected $table = 'tags';
 
    /**
     * The roles that belong to the user.
