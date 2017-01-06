@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSettingsTable extends Migration
+class CreateProjectTagsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateSettingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('settings', function (Blueprint $table) {
-          $table->increments('id');
-          $table->string('name')->unique();
-          $table->string('value');
-          $table->timestamps();
+        Schema::create('project_tag', function (Blueprint $table) {
+          $table->integer('project_id');
+          $table->integer('tag_id');
+          $table->primary(['project_id', 'tag_id']);
         });
     }
 
@@ -28,6 +27,6 @@ class CreateSettingsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('settings');
+        Schema:drop('project_tag');
     }
 }

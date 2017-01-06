@@ -12,6 +12,16 @@ class Project extends Model
    * @var string
    */
    protected $table = 'projects';
+
+
+  /**
+   * The roles that belong to the user.
+   */
+   function tags() {
+     return $this->belongsToMany('App\Tag', 'project_tag',
+        'project_id', 'tag_id');
+  }
+
 }
 
 ?>

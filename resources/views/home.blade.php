@@ -260,9 +260,9 @@ section#landing-section {
         </div>
         <div class="col-sm-6">
           <div class="text">
-            <h1 class="title">Alex Radu</h1>
-            <h4 class="subtitle">Software Engineer</h4>
-            <h5 class="quote">Anything is possible with enough determination</h5>
+            <h1 class="title"><?=get_option('my_name')?></h1>
+            <h4 class="subtitle"><?=get_option('name_subtitle')?></h4>
+            <h5 class="quote"><?=get_option('quote')?></h5>
           </div>
         </div>
       </div>
