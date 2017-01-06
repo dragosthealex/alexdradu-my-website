@@ -2,7 +2,6 @@ $(document).ready(function() {
 
   // Ripple effect
   $('.btn').on('click', function (event) {
-    event.preventDefault();
     var $div = $('<div/>'),
         btnOffset = $(this).offset(),
     		xPos = event.pageX - btnOffset.left,

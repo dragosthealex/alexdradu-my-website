@@ -11,9 +11,7 @@
   width: 100%;
 }
 .header .navbar {
-  border-radius: 0;
   background-color: rgba(0,0,0,0);
-  border: none;
   transition: all 0.4s ease-in;
 }
 .header .navbar .navbar-brand,
