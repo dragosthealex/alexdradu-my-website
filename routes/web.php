@@ -20,5 +20,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', function () {
-  return redirect('/');
+  return redirect('/settings');
 });
+Route::get('/settings', 'HomeController@settings');

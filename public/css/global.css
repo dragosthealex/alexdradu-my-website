@@ -46,6 +46,13 @@ div.img, .btn, h1, h2, h3, img {
 .header .navbar ul > li > a:hover {
   color: #fefefe;
 }
+.header .navbar .dropdown-menu li a {
+  color: #3F51B5;
+}
+.header .navbar .dropdown-menu li a:hover,
+.header .navbar .dropdown-menu li a:active {
+  color: #3F51B5;
+}
 
 .header .navbar-default .navbar-collapse, .navbar-default .navbar-form {
   border: none;

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', "Alex Radu's personal website")
+@section('title', get_option('my_name') . "'s personal website")
 
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{ asset('plugins/vegas/vegas.min.css') }}">
@@ -30,7 +30,6 @@
 }
 .header.sticky .navbar .navbar-brand,
 .header.sticky .navbar ul > li > a {
-  color: #fafafa;
   transition: all 0.4s ease-in;
 }
 
@@ -251,23 +250,23 @@ section#landing-section {
 
 @section('content')
 <section class="section full-height full-width landing" id="landing-section">
-    <!-- <h1 class="hero-text">Coming soon...</h1> -->
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="profile-img img"
-            style="background-image:url('{{ asset(get_option('profile_pic')) }}')">
-          </div>
+  <!-- <h1 class="hero-text">Coming soon...</h1> -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="profile-img img"
+          style="background-image:url('{{ asset(get_option('profile_pic')) }}')">
         </div>
-        <div class="col-sm-6">
-          <div class="text">
-            <h1 class="title"><?=get_option('my_name')?></h1>
-            <h4 class="subtitle"><?=get_option('name_subtitle')?></h4>
-            <h5 class="quote"><?=get_option('quote')?></h5>
-          </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="text">
+          <h1 class="title"><?=get_option('my_name')?></h1>
+          <h4 class="subtitle"><?=get_option('name_subtitle')?></h4>
+          <h5 class="quote"><?=get_option('quote')?></h5>
         </div>
       </div>
     </div>
+  </div>
 </section>
 <section class="section padding full-width full-height" id="projects-section">
   <div class="container-fluid">

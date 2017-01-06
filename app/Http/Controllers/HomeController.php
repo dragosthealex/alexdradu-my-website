@@ -17,14 +17,11 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the settings dashboard.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('home')
-                ->with('tags', Tag::all())
-                ->with('projects', Project::with('tags')->get());
+    public function settings() {
+      return view('settings');
     }
 }
