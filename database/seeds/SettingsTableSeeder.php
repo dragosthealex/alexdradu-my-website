@@ -49,5 +49,9 @@ class SettingsTableSeeder extends Seeder
       'name'  => 'gplus_url',
       'value' => 'https://plus.google.com/u/0/113055544527860966361'
     ]);
+    Setting::create([
+      'name'  => 'copyright_text',
+      'value' => 'Alex Radu &copy; 2017'
+    ]);
   }
 }
