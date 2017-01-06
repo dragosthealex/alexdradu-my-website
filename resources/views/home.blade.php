@@ -67,57 +67,59 @@ section#landing-section {
 .isotope-grid {
   margin-bottom: 6px;
 }
-.isotope-grid .item-wrapper {
+.item-wrapper {
   margin-bottom: 6px;
 }
-.isotope-grid .item-card {
+.item-card {
   height: 300px;
   background-color: transparent;
+  border-radius: 5px;
 }
-.isotope-grid .item-card .card-description {
+.item-card .card-description {
   height: 60px;
   margin-bottom: 20px;
 }
-.isotope-grid .item-card .card-content {
+.item-card .card-content {
   background-color: #fefefe;
 }
-.isotope-grid .item-card .card-title {
+.item-card .card-title {
   bottom: 20px;
   top: auto;
   margin-left: 20px;
   position: absolute;
 }
-.isotope-grid .item-card .card-title a {
+.item-card .card-title a {
   color: #fafafa;
   text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
 }
-.isotope-grid .item-card .card-details {
+.item-card .card-details {
   font-size: 15px;
   font-weight: bold;
 }
-.isotope-grid .item-card .card-subtitle {
+.item-card .card-subtitle {
   display: none;
 }
-.isotope-grid .item-card .card-body {
+.item-card .card-body {
   height: 240px;
 }
-.isotope-grid .item-card .card-body .card-title {
+.item-card .card-body .card-title {
   position: static;
   margin-bottom: 5px;
   margin-top: 0;
   white-space: normal;
 }
-.isotope-grid .item-card .card-body .card-title a {
+.item-card .card-body .card-title a {
   color: #333;
   text-shadow: 1px 1px 1px rgb(243, 243, 5);
 }
-.isotope-grid .item-card .card-body .card-date {
+.item-card .card-body .card-date {
   margin-bottom: 5px;
 }
-.isotope-grid .item-card .card-cover {
+.item-card .card-cover {
   background-repeat: no-repeat;
   background-position: center;
   background-origin: 0,0;
+  border-radius: 5px;
   background-size: cover;
   height: 100%;
   cursor: pointer;
@@ -128,27 +130,40 @@ section#landing-section {
   -moz-box-shadow: inset 0 -50px 200px -50px #000;
   box-shadow: inset 0 -50px 200px -50px #000;
 }
-.isotope-grid .item-card .card-cover:hover {
+.item-card .card-cover:hover {
   -webkit-box-shadow: inset 0 -50px 200px -10px #000;
   -moz-box-shadow: inset 0 -50px 200px -10px #000;
   box-shadow: inset 0 -50px 200px -10px #000;
 }
-.isotope-grid .item-card .front {
+.item-card .back .card-content {
+  border-radius: 5px;
+}
+.item-card .back hr {
+  margin: 10px 0 0;
+}
+.item-card .back .card-footer {
+  padding: 0 8px;
+}
+.item-card .back .card-footer a {
+  margin: 8px 4px 8px 0;
+}
+.item-card .front {
   z-index: 2!important;
   display: none;
 }
-.isotope-grid .item-card.flip .front {
+.item-card.flip .front {
   display: block;
 }
-.isotope-grid .item-card .front .card-title {
+.item-card .front .card-title {
 }
-.isotope-grid .item-card .front .card-date {
+.item-card .front .card-date {
   bottom: 0;
   position: absolute;
   font-size: 16px;
   margin-bottom: 10px;
   margin-left: 16px;
-}.isotope-grid .item-card .front .card-date a {
+}
+.item-card .front .card-date a {
   color: #fff;
   text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
 }
@@ -222,7 +237,7 @@ section#landing-section {
                 <p class="card-description">
                   ASDASDASD ASasdas asd asd asd a a sa sa asd
                   @if(false)
-                    <?=substr($event->description, 0, 100)?>... <a href="{{ url('events/' . $event->id) }}">More</a>
+                    <?=substr("asdasdasdasd", 0, 100)?>... <a href="{{ url('events/' . $event->id) }}">More</a>
                   @endif
                 </p>
                 <p class="card-details">
@@ -231,8 +246,10 @@ section#landing-section {
               </div>
               <hr>
               <div class="card-footer">
-                <a class="card-action" href="#">Tickets&nbsp;</a>
-                <a class="card-action" target="_blank" href="#">Directions&nbsp;<i class="fa fa-location-arrow" aria-hidden="true"></i></a>
+                <a class="btn btn-primary flat" href="#"
+                  data-ripple-color="#FFE0B2">
+                  <span>More</span>
+                </a>
               </div>
             </div>
           </div>
