@@ -55,6 +55,35 @@ section#landing-section {
     -ms-filter: filter(value);
     filter: blur(4px) brightness(0.6);
 }
+.landing .container {
+  color: #fafafa;
+  text-align: center;
+}
+.landing .container .text {
+  float: left;
+  margin-left: 20px;
+}
+.landing .container .title {
+  font-family: 'helvetica_neue', sans-serif;
+  margin-top: 45px;
+}
+.landing .container .subtitle {
+  font-family: 'Open Sans', sans-serif;
+  margin-bottom: 25px;
+}
+.landing .container .profile-img {
+  width: 200px;
+  height: 200px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.5);
+  float: right;
+  margin-right: 20px;
+}
 .hero-text {
     margin-top: 200px;
     text-align: center;
@@ -200,12 +229,43 @@ section#landing-section {
 
 }
 /* /isotope controls */
+@media(max-width:768px) {
+  .landing .container {
+    margin-top: 100px !important;
+  }
+  .landing .container .text {
+    float: none;
+    margin-left: 0;
+  }
+  .landing .container .profile-img {
+    float: none;
+    margin: auto;
+    height: 150px;
+    width: 150px;
+  }
+}
 </style>
 @endsection
 
 @section('content')
 <section class="section full-height full-width landing" id="landing-section">
-    <h1 class="hero-text">Coming soon...</h1>
+    <!-- <h1 class="hero-text">Coming soon...</h1> -->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="profile-img img"
+            style="background-image:url('{{ asset('img/bg/landing-1.jpg') }}')">
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="text">
+            <h1 class="title">Alex Radu</h1>
+            <h4 class="subtitle">Software Engineer</h4>
+            <h5 class="quote">Anything is possible with enough<br>determination</h5>
+          </div>
+        </div>
+      </div>
+    </div>
 </section>
 <section class="section padding full-width full-height" id="projects-section">
   <div class="container-fluid">
@@ -270,6 +330,8 @@ $(document).ready(function() {
   // Called every time window is resized
   var calledOnResize = function() {
     $("#landing-section").css("height", $(window).height());
+    $("#landing-section .container").css("margin-top", $(window).height()
+                                          * 2/5);
   },
   init = function() {
     // Lander slider
@@ -281,6 +343,8 @@ $(document).ready(function() {
             { src: "{{ asset('img/bg/landing-4.jpg') }}" }
         ],
     });
+    $("#landing-section .container").css("margin-top", $(window).height()
+                                          * 33/100);
     // Sticky class to navbar
     $(window).scroll(function() {
       if($(window).scrollTop() > 0) {
