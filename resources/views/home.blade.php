@@ -90,7 +90,11 @@ section#landing-section {
 }
 .item-card .card-title a {
   color: #fafafa;
-  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+  font-family: 'Open Sans', sans-serif;
+  text-transform: capitalize;
+}
+.item-card .card-title a:hover {
+  text-decoration: none;
 }
 .item-card .card-details {
   font-size: 15px;
@@ -101,16 +105,16 @@ section#landing-section {
 }
 .item-card .card-body {
   height: 240px;
+  overflow: hidden;
+  padding: 0 16px;
 }
 .item-card .card-body .card-title {
   position: static;
-  margin-bottom: 5px;
-  margin-top: 0;
+  margin: 24px 0 16px 0;
   white-space: normal;
 }
 .item-card .card-body .card-title a {
   color: #333;
-  text-shadow: 1px 1px 1px rgb(243, 243, 5);
 }
 .item-card .card-body .card-date {
   margin-bottom: 5px;
@@ -239,9 +243,6 @@ section#landing-section {
                   @if(false)
                     <?=substr("asdasdasdasd", 0, 100)?>... <a href="{{ url('events/' . $event->id) }}">More</a>
                   @endif
-                </p>
-                <p class="card-details">
-                  12 - 12, 12, 12
                 </p>
               </div>
               <hr>
