@@ -223,11 +223,12 @@ section#landing-section {
 .isotope-controls li {
   list-style: none;
   list-style-type: none;
-  margin: 0 2px;
+  margin: 4px 2px;
   display: inline-block;
 }
-.isotope-controls li a {
-
+.isotope-controls li .btn.active {
+  padding-bottom: 4.4px;
+  border-bottom: 2px solid #3F51B5;
 }
 /* /isotope controls */
 @media(max-width:768px) {
@@ -255,7 +256,7 @@ section#landing-section {
       <div class="row">
         <div class="col-sm-6">
           <div class="profile-img img"
-            style="background-image:url('{{ asset('img/bg/landing-1.jpg') }}')">
+            style="background-image:url('{{ asset(get_option('profile_pic')) }}')">
           </div>
         </div>
         <div class="col-sm-6">
@@ -275,14 +276,13 @@ section#landing-section {
       <div class="container">
         <ul class="isotope-controls">
           <li><a data-ripple-color="#C5CAE9"
-            class="btn flat btn-default"><span>Python</span></a>
+            class="btn flat btn-default active"><span>All</span></a>
           </li>
-          <li><a data-ripple-color="#C5CAE9"
-            class="btn flat btn-default"><span>Java</span></a>
-          </li>
-          <li><a data-ripple-color="#C5CAE9"
-            class="btn flat btn-default"><span>PHP</span></a>
-          </li>
+          @foreach($tags as $tag)
+            <li><a data-ripple-color="#C5CAE9"
+              class="btn flat btn-default"><span><?=$tag->name?></span></a>
+            </li>
+          @endforeach
         </ul>
       </div>
     </div>
@@ -354,6 +354,11 @@ $(document).ready(function() {
         $("#main-header").removeClass('sticky');
       }
     });
+    if($(window).scrollTop() > 0) {
+      $("#main-header").addClass('sticky');
+    } else {
+      $("#main-header").removeClass('sticky');
+    }
     // Apply fip
     $(".item-card.flip").flip();
     // Apply isotope
@@ -361,6 +366,11 @@ $(document).ready(function() {
       // options
       itemSelector: '.item-wrapper',
       layoutMode: 'fitRows'
+    });
+    // Isotope controls
+    $('.isotope-controls .btn').click(function() {
+      $('.isotope-controls .btn').removeClass('active');
+      $(this).addClass('active');
     });
   };
   $(window).resize(calledOnResize);

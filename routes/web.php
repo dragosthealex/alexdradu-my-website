@@ -12,9 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+  return view('home')
+          ->with('tags', App\Tag::all())
+          ->with('projects', App\Project::with('tags')->get());
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', function () {
+  return redirect('/');
+});

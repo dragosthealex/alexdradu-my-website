@@ -23,6 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('home')
+                ->with('tags', Tag::all())
+                ->with('projects', Project::with('tags')->get());
     }
 }
