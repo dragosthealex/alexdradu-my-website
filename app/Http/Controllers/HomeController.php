@@ -22,6 +22,6 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function settings() {
-      return view('settings');
+      
     }
 }

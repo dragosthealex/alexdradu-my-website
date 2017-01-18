@@ -22,4 +22,16 @@ Auth::routes();
 Route::get('/home', function () {
   return redirect('/settings');
 });
-Route::get('/settings', 'HomeController@settings');
+Route::group('/settings', function() {
+  Route::get('/', function() {
+    return redirect('/projects');
+  });
+  Route::group('Projects', function() {
+    Route::get('/', 'ProjectController@index');
+    Route::get('/add', 'ProjectController@create');
+    Route::post('/add', 'ProjectController@store');
+    Route::get('/edit/{id}', 'ProjectController@edit');
+    Route::post('/edit/{id}', 'ProjectController@update');
+    Route::get('/delete/{id}', 'ProjectController@destroy');
+  });
+});
