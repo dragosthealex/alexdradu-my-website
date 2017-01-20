@@ -25,7 +25,7 @@
       <div class="container main-content" id="main-content">
         <section class="section full-width" id="settings-section">
           <div class="container-fluid">
-            <div class="col-sm-3 primary">
+            <div class="col-sm-3 primary same-height">
               <ul class="settings">
                 <li>
                   <a href="{{ url('/settings') }}">Projects</a>
@@ -38,7 +38,7 @@
                 </li>
               </ul>
             </div>
-            <div class="col-sm-9 secondary">
+            <div class="col-sm-9 secondary same-height">
               @yield('content')
             </div>
           </div>
@@ -54,6 +54,14 @@
   <script
     src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
   </script>
+  <script
+    src="{{ asset('js/match_height.min.js') }}">
+  </script>
   <script src="{{ asset('js/global.js') }}"></script>
   @yield('post-scripts')
+  <script>
+    $(document).ready(function() {
+      $("#settings-section .same-height").matchHeight();
+    });
+  </script>
 </html>

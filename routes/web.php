@@ -22,11 +22,11 @@ Auth::routes();
 Route::get('/home', function () {
   return redirect('/settings');
 });
-Route::group('/settings', function() {
+Route::group(['prefix' => '/settings', 'middleware' => 'auth'], function() {
   Route::get('/', function() {
-    return redirect('/projects');
+    return redirect('/settings/projects');
   });
-  Route::group('Projects', function() {
+  Route::group(['prefix' => 'projects', 'middleware' => 'auth'], function() {
     Route::get('/', 'ProjectController@index');
     Route::get('/add', 'ProjectController@create');
     Route::post('/add', 'ProjectController@store');
