@@ -21,5 +21,45 @@ $(document).ready(function() {
       $div.remove();
     }, 1200);
   });
-
+  // Form labels
+  var onFocusInput = function(input) {
+    checkFileInput(input);
+    input.prev("label").addClass("focus show");
+    setTimeout(function() {
+      input.attr("placeholder", "");
+    }, 10);
+  }, onBlurInput = function(input) {
+    input.prev("label").removeClass("focus");
+    if(!input.val()) {
+      input.prev("label").removeClass("show");
+      setTimeout(function() {
+        input.attr("placeholder", input.attr("data-placeholder"));
+      }, 250);
+    }
+  }, checkFileInput = function(input) {
+    if($(input).attr("type") != "file" && !$(input).attr("data-file-input")) {
+      onBlurInput($(".form-group .form-control[type='file']").prev("input"));
+    }
+  };
+  $(".form-group .form-control:not(.datepicker)").focus(function() {
+    onFocusInput($(this));
+  });
+  $(".form-group .form-control:not(.datepicker)").blur(function() {
+    onBlurInput($(this));
+  });
+  $(".form-group .form-control.datepicker").on("open", function() {
+    onFocusInput($(this));
+  });
+  $(".form-group .form-control.datepicker").on("close", function() {
+    onBlurInput($(this));
+  });
+  $(".form-group .form-control.datepicker").on("change", function() {
+    onBlurInput($(this));
+  });
+  $(".form-group .form-control[type='file']").click(function() {
+    onFocusInput($(this).prev("input"));
+  });
+  $(document).click(function(e) {
+    checkFileInput(e.target);
+  });
 });

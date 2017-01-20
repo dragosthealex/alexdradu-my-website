@@ -13,6 +13,12 @@
         href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
       <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto"
         rel="stylesheet">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+      <link href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css"
+        rel="stylesheet">
+      <link href="{{ asset('plugins/datepicker/bootstrap-material-datetimepicker.css') }}"
+        rel="stylesheet">
       <link rel="stylesheet"
         type="text/css" href="{{ asset('css/global.css') }}">
         <link rel="stylesheet"
@@ -55,13 +61,24 @@
     src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
   </script>
   <script
-    src="{{ asset('js/match_height.min.js') }}">
+    src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js">
+  </script>
+  <script
+    src="{{ asset('plugins/match-height/match-height.min.js') }}">
+  </script>
+  <script
+    src="{{ asset('plugins/moment/moment.min.js') }}">
+  </script>
+  <script
+    src="{{ asset('plugins/datepicker/bootstrap-material-datetimepicker.js') }}">
   </script>
   <script src="{{ asset('js/global.js') }}"></script>
   @yield('post-scripts')
   <script>
     $(document).ready(function() {
       $("#settings-section .same-height").matchHeight();
+      $(".datatables").DataTable();
+      $(".datepicker").bootstrapMaterialDatePicker({time: false});
     });
   </script>
 </html>
