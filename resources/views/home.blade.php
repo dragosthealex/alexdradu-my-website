@@ -312,6 +312,15 @@ section#landing-section {
                     data-ripple-color="#FFE0B2">
                     <span>More</span>
                   </a>
+                  @if($project->git)
+                  <a class="btn btn-default flat has-icon" href="#"
+                    data-ripple-color="#FFE0B2">
+                    <span class="btn-icon"
+                          style="background-image:url('{{ asset('img/icons/github.svg') }}')">
+                    </span>
+                    <span>Git</span>
+                  </a>
+                  @endif
                 </div>
               </div>
             </div>

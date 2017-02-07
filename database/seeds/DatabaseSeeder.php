@@ -17,5 +17,7 @@ class DatabaseSeeder extends Seeder
         Log::info('Settings table seeded.');
         $this->call(TagsTableSeeder::class);
         Log::info('Tags table seeded.');
+        $this->call(ProjectsTableSeeder::class);
+        Log::info('Projects table seeded');
     }
 }

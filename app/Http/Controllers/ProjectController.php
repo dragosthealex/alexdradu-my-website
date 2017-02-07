@@ -43,7 +43,6 @@ class ProjectController extends Controller
 
         $project = new Project();
         $project->name = $request->input('name');
-        $project->slug = str_slug($request->input('name'));
         $project->date = $request->input('date');
         $project->description = $request->input('description');
         $project->short_description = $request->input('short_description');
@@ -117,10 +116,7 @@ class ProjectController extends Controller
         if(!$project) {
           return redirect()->back();
         }
-        // Move photos to archive
-        rename("photos/".Auth::id()."/projects/".$project->slug, "archives/".Auth::id()."/".$project->slug."_".date('dmY_His'));
-        // Delete project and tags
-        $project->tags()->delete();
+        
         $project->delete();
         return redirect()->back();
     }
