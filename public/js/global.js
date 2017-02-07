@@ -67,4 +67,13 @@ $(document).ready(function() {
   $(document).click(function(e) {
     checkFileInput(e.target);
   });
+  // Check if value already set
+  setTimeout(function(){
+    console.log("asd");
+    $("input, textarea").each(function() {
+      console.log($(this));
+      onFocusInput($(this));
+      onBlurInput($(this));
+    });
+  }, 100);
 });

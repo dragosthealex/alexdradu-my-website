@@ -58,12 +58,17 @@ class ProjectController extends Controller
           $id = $tag->id;
           $project->tags()->attach($id);
         }
-        // Make dir for photos
-        mkdir("photos/".Auth::id()."/projects/".$project->slug);
+        // Make dir for photos if not exists
+        if(!file_exists("photos/".Auth::id()."/projects/".$project->slug)) {
+          mkdir("photos/".Auth::id()."/projects/".$project->slug);
+        }
+        // Upload file
         if($request->hasFile('cover')) {
           $cover = $request->file('cover');
-          $cover->storeAs("photos/".Auth::id()."/projects/".$project->slug, "cover." . $cover->getClientOriginalExtension());
-          $cover->move("photos/".Auth::id()."/projects/".$project->slug, "cover." . $cover->getClientOriginalExtension());
+          $cover->storeAs("photos/".Auth::id()."/projects/".$project->slug, "cover."
+              . $cover->getClientOriginalExtension());
+          $cover->move("photos/".Auth::id()."/projects/".$project->slug, "cover."
+              . $cover->getClientOriginalExtension());
         }
 
         return redirect()->to('settings/projects');
@@ -88,7 +93,8 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.projects.edit');
+        return view('admin.projects.edit')
+                ->with('project', Project::find($id));
     }
 
     /**
@@ -100,7 +106,41 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      // TODO: validate stuff
+
+      $project = Project::find($id);
+      $project->name = $request->input('name');
+      $project->date = $request->input('date');
+      $project->description = $request->input('description');
+      $project->short_description = $request->input('short_description');
+      $project->git = $request->input('git');
+      $project->save();
+      $project->tags()->detach();
+      foreach(explode(',', $request->input('tags')) as $tagName) {
+        $tag = Tag::where('name', strtolower($tagName))->first();
+        if(!$tag) {
+          $tag = new Tag();
+          $tag->name = $tagName;
+          $tag->save();
+        }
+        $id = $tag->id;
+        $project->tags()->attach($id);
+      }
+
+      // Make dir for photos if not exists
+      if(!file_exists("photos/".Auth::id()."/projects/".$project->slug)) {
+        mkdir("photos/".Auth::id()."/projects/".$project->slug);
+      }
+      // Upload file
+      if($request->hasFile('cover')) {
+        $cover = $request->file('cover');
+        $cover->storeAs("photos/".Auth::id()."/projects/".$project->slug, "cover."
+            . $cover->getClientOriginalExtension());
+        $cover->move("photos/".Auth::id()."/projects/".$project->slug, "cover."
+            . $cover->getClientOriginalExtension());
+      }
+
+      return redirect()->back();
     }
 
     /**
@@ -116,7 +156,7 @@ class ProjectController extends Controller
         if(!$project) {
           return redirect()->back();
         }
-        
+
         $project->delete();
         return redirect()->back();
     }

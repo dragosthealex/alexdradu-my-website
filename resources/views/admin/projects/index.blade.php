@@ -24,7 +24,11 @@
       <tbody>
         @foreach($projects as $project)
         <tr>
-          <td><?=$project->name?></td>
+          <td>
+            <a href="{{ url('settings/projects/edit/'.$project->id) }}">
+              <?=$project->name?>
+            </a>
+          </td>
           <td><?=$project->date?></td>
           <td>
             @foreach($project->tags as $tag)

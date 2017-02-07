@@ -19,8 +19,7 @@ Route::get('/', function () {
 });
 Route::get('/projects/{slug}', function($slug) {
   return view('projects.index')
-          ->with('project', App\Project::where('slug', $slug)->first()
-                              ->with('tags'));
+          ->with('project', App\Project::where('slug', $slug)->first());
 });
 
 // Auth
