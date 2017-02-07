@@ -291,13 +291,13 @@ section#landing-section {
           <div class="has-cover item-card flip">
             <div class="front">
               <div class="card-cover" style="background-image:url('{{ asset('photos/1/projects/'.$project->slug.'/cover.png') }}');"></div>
-              <h2 class="card-title"><a href="#"><?=$project->name?></a></h2>
-              <h2 class="card-date"><a href="#"><?=date('l, j F Y', strtotime($project->date))?></a></h2>
+              <h2 class="card-title"><a><?=$project->name?></a></h2>
+              <h2 class="card-date"><a><?=date('l, j F Y', strtotime($project->date))?></a></h2>
             </div>
             <div class="back">
               <div class="card-content">
                 <div class="card-body">
-                  <h2 class="card-title"><a href="#"><?=$project->name?></a></h2>
+                  <h2 class="card-title"><a><?=$project->name?></a></h2>
                   <h4 class="card-date"><?=date('l, j F Y', strtotime($project->date))?></h4>
                   <p class="card-description">
                     <?=$project->short_description?>

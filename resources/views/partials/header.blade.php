@@ -13,7 +13,8 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="#">Blog</a></li>
+          @if(false)<li><a href="#">Blog</a></li>@endif
+          <li><a href="{{ url('cv.pdf') }}" target="_blank">CV</a>
           @if (false && Auth::guest())
               <li><a href="{{ url('/login') }}">Login</a></li>
               <li><a href="{{ url('/register') }}">Register</a></li>

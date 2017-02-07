@@ -11,17 +11,27 @@
 |
 */
 
+// User routes
 Route::get('/', function () {
   return view('home')
           ->with('tags', App\Tag::all())
           ->with('projects', App\Project::with('tags')->get());
 });
+Route::get('/projects/{slug}', function($slug) {
+  return view('projects.index')
+          ->with('project', App\Project::where('slug', $slug)->first()
+                              ->with('tags'));
+});
 
+// Auth
 Auth::routes();
 
+// TODO: remove this
 Route::get('/home', function () {
   return redirect('/settings');
 });
+
+// Admin routes
 Route::group(['prefix' => '/settings', 'middleware' => 'auth'], function() {
   Route::get('/', function() {
     return redirect('/settings/projects');
