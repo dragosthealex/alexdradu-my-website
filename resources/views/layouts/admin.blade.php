@@ -19,6 +19,8 @@
         rel="stylesheet">
       <link href="{{ asset('plugins/datepicker/bootstrap-material-datetimepicker.css') }}"
         rel="stylesheet">
+      <link href="{{ asset('plugins/bootstrap-tagsinput/bootstrap-tagsinput.css') }}"
+        rel="stylesheet">
       <link rel="stylesheet"
         type="text/css" href="{{ asset('css/global.css') }}">
         <link rel="stylesheet"
@@ -72,13 +74,27 @@
   <script
     src="{{ asset('plugins/datepicker/bootstrap-material-datetimepicker.js') }}">
   </script>
+  <script src="{{ asset('js/typeahead.js') }}"></script>
+  <script
+    src="{{ asset('plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js') }}">
+  </script>
+  <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+  <script src="{{ asset('vendor/unisharp/laravel-ckeditor/adapters/jquery.js') }}"></script>
   <script src="{{ asset('js/global.js') }}"></script>
   @yield('post-scripts')
   <script>
     $(document).ready(function() {
-      $("#settings-section .same-height").matchHeight();
       $(".datatables").DataTable();
       $(".datepicker").bootstrapMaterialDatePicker({time: false});
+      $('textarea').ckeditor({
+        filebrowserImageBrowseUrl: "{{ url('/laravel-filemanager?type=Images') }}",
+        filebrowserImageUploadUrl: "{{ url('/laravel-filemanager/upload?type=Images&_token=' . csrf_token()) }}",
+        filebrowserBrowseUrl: "{{ url('/laravel-filemanager?type=Files') }}",
+        filebrowserUploadUrl: "{{ url('/laravel-filemanager/upload?type=Files&_token=' . csrf_token()) }}",
+      });
+      setTimeout(function(){
+        $("#settings-section .same-height").matchHeight();
+      }, 500);
     });
   </script>
 </html>

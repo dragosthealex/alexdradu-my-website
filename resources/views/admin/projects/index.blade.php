@@ -16,18 +16,24 @@
   <div class="card-content">
     <table class="datatables table table-striped table-condensed">
       <thead>
-        <th>ID</th>
         <th>Name</th>
         <th>Date</th>
         <th>Tags</th>
+        <th>Actions</th>
       </thead>
       <tbody>
+        @foreach($projects as $project)
         <tr>
-          <td>12</td>
-          <td>asdasd asd</td>
-          <td>12.22.2222</td>
-          <td>as asd asd asd adas asd</td>
+          <td><?=$project->name?></td>
+          <td><?=$project->date?></td>
+          <td>
+            @foreach($project->tags as $tag)
+              <?=$tag->name?>,&nbsp;
+            @endforeach
+          </td>
+          <td><a href="{{ url('projects/delete/'.$project->id)}}" class="btn btn-danger">Delete</a></td>
         </tr>
+        @endforeach
       </tbody>
     </table>
   </div>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Project;
+use App\Tag;
 
 class ProjectController extends Controller
 {
@@ -13,7 +15,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return view('admin.projects.index');
+        return view('admin.projects.index')
+                ->with('projects', Project::all());
     }
 
     /**
@@ -23,7 +26,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.add');
+        return view('admin.projects.add')
+                ->with('tags', Tag::all());
     }
 
     /**
@@ -34,7 +38,33 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // TODO: validate stuff
+
+        $project = new Project();
+        $project->name = $request->input('name');
+        $project->slug = str_slug($request->input('name'));
+        $project->date = $request->input('date');
+        $project->description = $request->input('description');
+        $project->save();
+        foreach(explode(',', $request->input('tags')) as $tagName) {
+          $tag = Tag::where('name', $tagName)->first();
+          if(!$tag) {
+            $tag = new Tag();
+            $tag->name = $tagName;
+            $tag->save();
+          }
+          $id = $tag->id;
+          $project->tags()->attach($id);
+        }
+        // Make dir for photos
+        mkdir("photos/".Auth::id()."/projects/".$project->slug);
+        if($request->hasFile('cover') && $request->file('cover')->isValid()) {
+          $cover = $request->file('cover');
+          $cover->storeAs("photos/".Auth::id()."/projects/".$project->slug, "cover." . $cover->getClientOriginalExtension());
+          $cover->move("photos/".Auth::id()."/projects/".$project->slug, "cover." . $cover->getClientOriginalExtension());
+        }
+
+        return redirect()->to('settings/projects');
     }
 
     /**
@@ -79,6 +109,11 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // TODO: check stuff
+        $project = Project::find($id);
+        if($project) {
+          $project->delete();
+        }
+        return redirect()->back();
     }
 }

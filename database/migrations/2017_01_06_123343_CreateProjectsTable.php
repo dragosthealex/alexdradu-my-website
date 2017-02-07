@@ -18,9 +18,9 @@ class CreateProjectsTable extends Migration
           $table->string('name', 250)->unique();
           $table->string('slug', 200)->unique();
           $table->date('date');
-          $table->string('description', 5000);
-          $table->string('git', 200);
-          $table->string('urls', 1000);
+          $table->string('description', 5000)->nullable()->default(null);
+          $table->string('git', 200)->nullable()->default(null);
+          $table->string('urls', 1000)->nullable()->default(null);
           $table->timestamps();
         });
     }
