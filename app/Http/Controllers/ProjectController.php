@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Project;
 use App\Tag;
+use Auth;
 
 class ProjectController extends Controller
 {
@@ -45,9 +46,11 @@ class ProjectController extends Controller
         $project->slug = str_slug($request->input('name'));
         $project->date = $request->input('date');
         $project->description = $request->input('description');
+        $project->short_description = $request->input('short_description');
+        $project->git = $request->input('git');
         $project->save();
         foreach(explode(',', $request->input('tags')) as $tagName) {
-          $tag = Tag::where('name', $tagName)->first();
+          $tag = Tag::where('name', strtolower($tagName))->first();
           if(!$tag) {
             $tag = new Tag();
             $tag->name = $tagName;
@@ -58,7 +61,7 @@ class ProjectController extends Controller
         }
         // Make dir for photos
         mkdir("photos/".Auth::id()."/projects/".$project->slug);
-        if($request->hasFile('cover') && $request->file('cover')->isValid()) {
+        if($request->hasFile('cover')) {
           $cover = $request->file('cover');
           $cover->storeAs("photos/".Auth::id()."/projects/".$project->slug, "cover." . $cover->getClientOriginalExtension());
           $cover->move("photos/".Auth::id()."/projects/".$project->slug, "cover." . $cover->getClientOriginalExtension());
@@ -111,9 +114,14 @@ class ProjectController extends Controller
     {
         // TODO: check stuff
         $project = Project::find($id);
-        if($project) {
-          $project->delete();
+        if(!$project) {
+          return redirect()->back();
         }
+        // Move photos to archive
+        rename("photos/".Auth::id()."/projects/".$project->slug, "archives/".Auth::id()."/".$project->slug."_".date('dmY_His'));
+        // Delete project and tags
+        $project->tags()->delete();
+        $project->delete();
         return redirect()->back();
     }
 }

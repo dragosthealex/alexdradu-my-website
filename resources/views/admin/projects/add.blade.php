@@ -15,7 +15,8 @@
   </div>
   <div class="card-content">
     <form method="POST" action="{{ url('/settings/projects/add') }}"
-      id="add-project-form">
+      id="add-project-form"
+      enctype="multipart/form-data">
       {{ csrf_field() }}
       <div class="form-group col-sm-6">
         <label required="required" for="name" class="control-label">Name</label>
@@ -27,9 +28,20 @@
         <input type="text" class="form-control datepicker" name="date" id="date"
           placeholder="Date" data-placeholder="Date">
       </div>
+      <div class="form-group col-sm-12">
+        <label for="git" class="control-label">Git URL</label>
+        <input type="text" class="form-control" name="git" id="git"
+          placeholder="Git URL" data-placeholder="Git URL">
+      </div>
+      <div class="form-group has-textarea col-sm-12">
+        <label for="short_description" class="control-label">Short Description</label>
+        <textarea required="required" type="text" class="form-control"
+          name="short_description" id="short_description" placeholder="Short Description"
+          data-placeholder="Short Description" rows="2"></textarea>
+      </div>
       <div class="form-group has-textarea col-sm-12">
         <label for="description" class="control-label">Description</label>
-        <textarea required="required" type="text" class="form-control"
+        <textarea required="required" type="text" class="form-control editor"
           name="description" id="description" placeholder="Description"
           data-placeholder="Description" rows="5"></textarea>
       </div>

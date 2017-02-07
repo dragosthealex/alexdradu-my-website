@@ -86,7 +86,7 @@
     $(document).ready(function() {
       $(".datatables").DataTable();
       $(".datepicker").bootstrapMaterialDatePicker({time: false});
-      $('textarea').ckeditor({
+      $('textarea.editor').ckeditor({
         filebrowserImageBrowseUrl: "{{ url('/laravel-filemanager?type=Images') }}",
         filebrowserImageUploadUrl: "{{ url('/laravel-filemanager/upload?type=Images&_token=' . csrf_token()) }}",
         filebrowserBrowseUrl: "{{ url('/laravel-filemanager?type=Files') }}",

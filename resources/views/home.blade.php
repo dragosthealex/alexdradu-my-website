@@ -275,47 +275,49 @@ section#landing-section {
       <div class="container">
         <ul class="isotope-controls">
           <li><a data-ripple-color="#C5CAE9"
-            class="btn flat btn-default active"><span>All</span></a>
+            class="btn flat btn-default active" data-filter="*"><span>All</span></a>
           </li>
           @foreach($tags as $tag)
             <li><a data-ripple-color="#C5CAE9"
-              class="btn flat btn-default"><span><?=$tag->name?></span></a>
+              class="btn flat btn-default" data-filter=".<?=$tag->name?>"><span><?=$tag->name?></span></a>
             </li>
           @endforeach
         </ul>
       </div>
     </div>
     <div class="isotope-grid">
-      <div class="item-wrapper col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12">
-        <div class="has-cover item-card flip">
-          <div class="front">
-            <div class="card-cover" style="background-image:url('{{ asset('img/bg/landing-1.jpg') }}');"></div>
-            <h2 class="card-title"><a href="#">test</a></h2>
-            <h2 class="card-date"><a href="#"><?=date('l, j F Y', strtotime('10.11.2015'))?></a></h2>
-          </div>
-          <div class="back">
-            <div class="card-content">
-              <div class="card-body">
-                <h2 class="card-title"><a href="#">test</a></h2>
-                <h4 class="card-date"><?=date('l, j F Y', strtotime('10.11.2015'))?></h4>
-                <p class="card-description">
-                  ASDASDASD ASasdas asd asd asd a a sa sa asd
-                  @if(false)
-                    <?=substr("asdasdasdasd", 0, 100)?>... <a href="{{ url('events/' . $event->id) }}">More</a>
-                  @endif
-                </p>
-              </div>
-              <hr>
-              <div class="card-footer">
-                <a class="btn btn-primary flat" href="#"
-                  data-ripple-color="#FFE0B2">
-                  <span>More</span>
-                </a>
+      @foreach($projects as $project)
+        <div class="item-wrapper col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12 <?php foreach($project->tags as $tag){echo $tag->name." ";}?>">
+          <div class="has-cover item-card flip">
+            <div class="front">
+              <div class="card-cover" style="background-image:url('{{ asset('photos/1/projects/'.$project->slug.'/cover.png') }}');"></div>
+              <h2 class="card-title"><a href="#"><?=$project->name?></a></h2>
+              <h2 class="card-date"><a href="#"><?=date('l, j F Y', strtotime($project->date))?></a></h2>
+            </div>
+            <div class="back">
+              <div class="card-content">
+                <div class="card-body">
+                  <h2 class="card-title"><a href="#"><?=$project->name?></a></h2>
+                  <h4 class="card-date"><?=date('l, j F Y', strtotime($project->date))?></h4>
+                  <p class="card-description">
+                    <?=$project->short_description?>
+                    @if(false)
+                      <?=substr("asdasdasdasd", 0, 100)?>... <a href="{{ url('events/' . $event->id) }}">More</a>
+                    @endif
+                  </p>
+                </div>
+                <hr>
+                <div class="card-footer">
+                  <a class="btn btn-primary flat" href="#"
+                    data-ripple-color="#FFE0B2">
+                    <span>More</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      @endforeach
     </div>
   </div>
 </section>
@@ -361,7 +363,7 @@ $(document).ready(function() {
     // Apply fip
     $(".item-card.flip").flip();
     // Apply isotope
-    $('.isotope-grid').isotope({
+    $grid = $('.isotope-grid').isotope({
       // options
       itemSelector: '.item-wrapper',
       layoutMode: 'fitRows'
@@ -370,6 +372,8 @@ $(document).ready(function() {
     $('.isotope-controls .btn').click(function() {
       $('.isotope-controls .btn').removeClass('active');
       $(this).addClass('active');
+      var filterValue = $(this).attr('data-filter');
+      $grid.isotope({filter: filterValue})
     });
   };
   $(window).resize(calledOnResize);

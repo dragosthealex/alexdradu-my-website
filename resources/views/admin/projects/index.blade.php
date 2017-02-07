@@ -31,7 +31,9 @@
               <?=$tag->name?>,&nbsp;
             @endforeach
           </td>
-          <td><a href="{{ url('projects/delete/'.$project->id)}}" class="btn btn-danger">Delete</a></td>
+          <td><a href="{{ url('settings/projects/delete/'.$project->id)}}"
+            onclick="return confirm('Are you sure?')"
+            class="btn btn-danger">Delete</a></td>
         </tr>
         @endforeach
       </tbody>

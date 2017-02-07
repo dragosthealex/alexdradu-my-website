@@ -13,55 +13,55 @@ class TagsTableSeeder extends Seeder
     public function run()
     {
         Tag::create([
-          'name'  => 'PHP'
+          'name'  => 'php'
         ]);
         Tag::create([
-          'name'  => 'Python'
+          'name'  => 'python'
         ]);
         Tag::create([
-          'name'  => 'Java'
+          'name'  => 'java'
         ]);
         Tag::create([
-          'name'  => 'CSS'
+          'name'  => 'css'
         ]);
         Tag::create([
-          'name'  => 'C#'
+          'name'  => 'c#'
         ]);
         Tag::create([
-          'name'  => 'C'
+          'name'  => 'c'
         ]);
         Tag::create([
-          'name'  => 'C++'
+          'name'  => 'c++'
         ]);
         Tag::create([
-          'name'  => 'Laravel'
+          'name'  => 'laravel'
         ]);
         Tag::create([
-          'name'  => 'Unity3D'
+          'name'  => 'unity3d'
         ]);
         Tag::create([
-          'name'  => 'Linux'
+          'name'  => 'linux'
         ]);
         Tag::create([
-          'name'  => 'JavaScript'
+          'name'  => 'javascript'
         ]);
         Tag::create([
-          'name'  => 'HTML'
+          'name'  => 'html'
         ]);
         Tag::create([
-          'name'  => 'Machine Learning'
+          'name'  => 'machine learning'
         ]);
         Tag::create([
-          'name'  => 'Neural Networks'
+          'name'  => 'neural networks'
         ]);
         Tag::create([
-          'name'  => 'Android'
+          'name'  => 'android'
         ]);
         Tag::create([
-          'name'  => 'Game'
+          'name'  => 'game'
         ]);
         Tag::create([
-          'name'  => 'Winner'
+          'name'  => 'winner'
         ]);
     }
 }
