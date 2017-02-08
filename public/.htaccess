@@ -42,6 +42,7 @@
     SetOutputFilter DEFLATE
     AddOutputFilterByType DEFLATE text/html text/plain text/xml text/javascript application/javascript application/x-font-ttf text/css
     AddOutputFilter DEFLATE js css
+    AddOutputFilter DEFLATE
 </IfModule>
 
 <IfModule mod_headers.c>
@@ -53,7 +54,7 @@
         Header set Cache-Control "max-age=86400"
     </FilesMatch>
     # WEEK
-    <FilesMatch "\.(jpg|jpeg|png|gif|swf)$">
+    <FilesMatch "\.(svg)$">
         Header set Cache-Control "max-age=604800, public"
     </FilesMatch>
     # WEEK

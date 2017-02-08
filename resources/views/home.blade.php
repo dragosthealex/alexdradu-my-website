@@ -91,7 +91,25 @@ section#landing-section {
     color: #fff;
     text-shadow: -1px -1px 5px rgba(0,0,0,0.4);
 }
+.btn-landing {
+  margin-top: 50px;
+  width: 50px;
+  height: 50px;
+  padding: 13px;
+  text-align: center;
+  background: rgba(68, 138, 255, 0.3);
+}
+.btn-landing:active,
+.btn-landing:focus,
+.btn-landing:active:hover {
+  background: rgba(68, 138, 255, 0.4);
+}
 
+.btn-landing span {
+  margin-left: 2px;
+  margin-top: 2px;
+  color: rgba(255,255,255,0.9);
+}
 /* Isotope cards */
 .isotope-grid {
   margin-bottom: 6px;
@@ -238,6 +256,7 @@ section#landing-section {
   .landing .container .text {
     float: none;
     margin-left: 0;
+    margin: auto;
   }
   .landing .container .profile-img {
     float: none;
@@ -265,6 +284,14 @@ section#landing-section {
           <h4 class="subtitle"><?=get_option('name_subtitle')?></h4>
           <h5 class="quote"><?=get_option('quote')?></h5>
         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <a class="btn btn-round btn-landing btn-scroll"
+           data-scroll-to="projects-section">
+            <span class="glyphicon glyphicon-chevron-down"></span>
+        </a>
       </div>
     </div>
   </div>
@@ -407,6 +434,13 @@ $(document).ready(function() {
       $(this).addClass('active');
       var filterValue = $(this).attr('data-filter');
       $grid.isotope({filter: filterValue})
+    });
+    // Btn scrolls
+    $(".btn-scroll").click(function() {
+      var el = $("#" + $(this).attr('data-scroll-to'));
+      $('html, body').animate({
+          scrollTop: el.offset().top
+      }, 1000);
     });
   };
   $(window).resize(calledOnResize);
