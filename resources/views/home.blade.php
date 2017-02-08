@@ -397,7 +397,7 @@ $(document).ready(function() {
     // Apply isotope
     $grid = $('.isotope-grid').isotope({
       // options
-      itemSelector: '."urls"                =>  "[]"apper',
+      itemSelector: '.item-wrapper',
       layoutMode: 'fitRows'
     });
     // Isotope controls
