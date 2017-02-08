@@ -111,6 +111,7 @@ class ProjectController extends Controller
       $project = Project::find($id);
       $project->name = $request->input('name');
       $project->date = $request->input('date');
+      $project->date_alt = $request->input('date_alt');
       $project->description = $request->input('description');
       $project->short_description = $request->input('short_description');
       $project->git = $request->input('git');

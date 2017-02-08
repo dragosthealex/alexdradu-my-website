@@ -12,6 +12,11 @@
     <input type="text" class="form-control datepicker" name="date" id="date"
       placeholder="Date" data-placeholder="Date"  value="<?=$project?$project->date:old('date')?>">
   </div>
+  <div class="form-group col-sm-6">
+    <label for="date_alt" class="control-label">Date (Alternative)</label>
+    <input type="text" class="form-control" name="date_alt" id="date_alt"
+      placeholder="Date (Alternative)" data-placeholder="Date (Alternative)"  value="<?=$project?$project->date_alt:old('date_alt')?>">
+  </div>
   <div class="form-group col-sm-12">
     <label for="git" class="control-label">Git URL</label>
     <input type="text" class="form-control" name="git" id="git"
@@ -35,7 +40,7 @@
       placeholder="Main Photo" data-placeholder="Main Photo" data-file-input="1">
     <input type="file" class="form-control" name="cover" id="cover"
       placeholder="Main Photo" data-placeholder="Main Photo">
-    @if($project && file_exists('photos/'.Auth::id().'/projects/'.$project->slug.'/cover.png'))
+    @if($project && $project->hasCover())
     <img class="thumb img-thumb img-thumbnail img-rounded img-responsive"
          src="{{ url('photos/'.Auth::id().'/projects/'.$project->slug.'/cover.png') }}">
     @endif

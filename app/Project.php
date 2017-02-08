@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class Project extends Model
 {
@@ -34,6 +35,21 @@ class Project extends Model
       return [];
     }
     return $value;
+  }
+
+  // Check if has cover
+  public function hasCover() {
+    if(file_exists('photos/'.Auth::id().'/projects/'.$this->slug.'/cover.png')) {
+      return asset('photos/'.Auth::id().'/projects/'.$this->slug.'/cover.png');
+    }
+    return false;
+  }
+  // Get cover / image
+  public function getCover() {
+    if($this->hasCover()) {
+      return $this->hasCover();
+    }
+    return asset('photos/no-photo.png');
   }
 }
 

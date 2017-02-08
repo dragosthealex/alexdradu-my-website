@@ -97,7 +97,7 @@ section#landing-section {
   margin-bottom: 6px;
 }
 .item-wrapper {
-  margin-bottom: 6px;
+  margin-bottom: 16px;
 }
 .item-card {
   height: 300px;
@@ -188,6 +188,7 @@ section#landing-section {
   display: block;
 }
 .item-card .front .card-title {
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.75);
 }
 .item-card .front .card-date {
   bottom: 0;
@@ -290,7 +291,7 @@ section#landing-section {
         <div class="item-wrapper col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12 <?php foreach($project->tags as $tag){echo $tag->name." ";}?>">
           <div class="has-cover item-card flip">
             <div class="front">
-              <div class="card-cover" style="background-image:url('{{ asset('photos/1/projects/'.$project->slug.'/cover.png') }}');"></div>
+              <div class="card-cover" style="background-image:url('<?=$project->getCover()?>');"></div>
               <h2 class="card-title"><a><?=$project->name?></a></h2>
               <h2 class="card-date">
                 <a>
@@ -396,7 +397,7 @@ $(document).ready(function() {
     // Apply isotope
     $grid = $('.isotope-grid').isotope({
       // options
-      itemSelector: '.item-wrapper',
+      itemSelector: '."urls"                =>  "[]"apper',
       layoutMode: 'fitRows'
     });
     // Isotope controls
