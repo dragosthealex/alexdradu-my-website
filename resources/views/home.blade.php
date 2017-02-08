@@ -322,10 +322,12 @@ section#landing-section {
                 </div>
                 <hr>
                 <div class="card-footer">
+                  @if(false)
                   <a class="btn btn-primary flat" href="#"
                     data-ripple-color="#FFE0B2">
                     <span>More</span>
                   </a>
+                  @endif
                   @if($project->git)
                   <a class="btn btn-default flat has-icon" href="#"
                     data-ripple-color="#FFE0B2">

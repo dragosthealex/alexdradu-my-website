@@ -26,7 +26,7 @@ class ProjectsTableSeeder extends Seeder
         "name"                =>  "ebook annotations - y3 project",
         "short_description"   =>  "Web application written in python and php that takes books from gutenberg project and annotates most uncommon words with their definition.",
         "date"                =>  "2017-02-01",
-        "date_alt"            =>  "September 2016 - ongoing",
+        "date_alt"            =>  "September 2016 - Ongoing",
         "git"                 =>  "https://github.com/dragosthealex/ebook-annotations",
       ]);
       $this->addTags($proj, ['python', 'machine learning', 'php', 'javascript', 'html', 'css']);
