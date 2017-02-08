@@ -279,7 +279,7 @@ section#landing-section {
           </li>
           @foreach($tags as $tag)
             <li><a data-ripple-color="#C5CAE9"
-              class="btn flat btn-default" data-filter=".<?=$tag->name?>"><span><?=$tag->name?></span></a>
+              class="btn flat btn-default" data-filter=".<?=$tag->name?>"><span><?=$tag->getOriginal('name')?></span></a>
             </li>
           @endforeach
         </ul>
@@ -292,13 +292,27 @@ section#landing-section {
             <div class="front">
               <div class="card-cover" style="background-image:url('{{ asset('photos/1/projects/'.$project->slug.'/cover.png') }}');"></div>
               <h2 class="card-title"><a><?=$project->name?></a></h2>
-              <h2 class="card-date"><a><?=date('l, j F Y', strtotime($project->date))?></a></h2>
+              <h2 class="card-date">
+                <a>
+                  @if($project->date_alt)
+                    <?=$project->date_alt?>
+                  @else
+                    <?=date('l, j F Y', strtotime($project->date))?>
+                  @endif
+                </a>
+              </h2>
             </div>
             <div class="back">
               <div class="card-content">
                 <div class="card-body">
                   <h2 class="card-title"><a><?=$project->name?></a></h2>
-                  <h4 class="card-date"><?=date('l, j F Y', strtotime($project->date))?></h4>
+                  <h4 class="card-date">
+                    @if($project->date_alt)
+                      <?=$project->date_alt?>
+                    @else
+                      <?=date('l, j F Y', strtotime($project->date))?>
+                    @endif
+                  </h4>
                   <p class="card-description">
                     <?=$project->short_description?>
                     @if(false)
@@ -319,6 +333,12 @@ section#landing-section {
                           style="background-image:url('{{ asset('img/icons/github.svg') }}')">
                     </span>
                     <span>Git</span>
+                  </a>
+                  @endif
+                  @if(count($project->urls))
+                  <a class="btn btn-default flat" href="<?=$project->urls[0]?>"
+                    data-ripple-color="#FFE0B2">
+                    <span>URL</span>
                   </a>
                   @endif
                 </div>

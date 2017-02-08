@@ -22,6 +22,19 @@ class Project extends Model
         'project_id', 'tag_id');
   }
 
+  public function getUrlsAttribute($value) {
+    if(!$value) {
+      return [];
+    }
+    if(!json_decode($value, 1)) {
+      $value = preg_replace("/\'/", "\"", $value);
+      $value = json_decode($value, 1);
+    }
+    if(!$value) {
+      return [];
+    }
+    return $value;
+  }
 }
 
 ?>
