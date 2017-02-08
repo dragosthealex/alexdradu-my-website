@@ -24,6 +24,7 @@ class Tag extends Model
     // Accesor for name
     public function getNameAttribute($value) {
       $value = preg_replace("/ /", "-", $value);
+      $value = preg_replace("/\+\+/", "pp", $value);
       $value = preg_replace("/\#/", "sharp", $value);
       return $value;
     }
