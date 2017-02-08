@@ -60,6 +60,9 @@ div.img, .btn, h1, h2, h3, img {
 .header .navbar-default .navbar-collapse, .navbar-default .navbar-form {
   border: none;
 }
+.header .navbar-right {
+  margin-top: 10px;
+}
 .section.full-height {
   min-height: 100vh;
 }

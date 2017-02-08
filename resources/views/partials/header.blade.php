@@ -40,6 +40,9 @@
             </li>
           @endif
         </ul>
+        <div class="navbar-right">
+          @include('partials.socials-bar')
+        </div>
       </div>
     </div>
   </nav>
