@@ -39,8 +39,8 @@ class Project extends Model
 
   // Check if has cover
   public function hasCover() {
-    if(file_exists('photos/'.Auth::id().'/projects/'.$this->slug.'/cover.png')) {
-      return asset('photos/'.Auth::id().'/projects/'.$this->slug.'/cover.png');
+    if(file_exists('photos/1/projects/'.$this->slug.'/cover.png')) {
+      return asset('photos/1/projects/'.$this->slug.'/cover.png');
     }
     return false;
   }
