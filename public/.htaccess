@@ -40,6 +40,22 @@
 # If doesn't work, try this
 <IfModule mod_deflate.c>
     SetOutputFilter DEFLATE
-    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/javascript application/javascript application/x-font-ttf
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/javascript application/javascript application/x-font-ttf text/css
+    AddOutputFilter DEFLATE js css
+</IfModule>
+
+<IfModule mod_headers.c>
+    # DAY
+    <FilesMatch "\.(jpg|jpeg|png|gif|swf)$">
+        Header set Cache-Control "max-age=86400, public"
+    </FilesMatch>
+    <FilesMatch "\.(js|css|swf)$">
+        Header set Cache-Control "max-age=86400"
+    </FilesMatch>
+    # WEEK
+    <FilesMatch "\.(jpg|jpeg|png|gif|swf)$">
+        Header set Cache-Control "max-age=604800, public"
+    </FilesMatch>
+    # WEEK
 
 </IfModule>
