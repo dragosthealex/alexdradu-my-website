@@ -20,11 +20,6 @@ Route::get('/home', function () {
   return redirect('/settings');
 });
 
-// Api routes
-Route::group(['prefix'=>'api'], function() {
-  Route::post('/github-hook', 'ApiController@githubHook');
-});
-
 // Auth routes
 Auth::routes();
 
