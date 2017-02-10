@@ -16,8 +16,8 @@ class HomeController extends Controller
     */
     public function index() {
       return view('home')
-              ->with('tags', App\Tag::all())
-              ->with('projects', App\Project::with('tags')->get());
+              ->with('tags', Tag::all())
+              ->with('projects', Project::with('tags')->get());
     }
 
     /**
@@ -28,6 +28,6 @@ class HomeController extends Controller
     */
     public function projectSingle($slug) {
       return view('projects.index')
-              ->with('project', App\Project::where('slug', $slug)->first());
+              ->with('project', Project::where('slug', $slug)->first());
     }
 }

@@ -18,6 +18,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:api');
 
 // Api routes
-Route::group(['prefix'=>'api'], function() {
-  Route::post('/github-hook', 'ApiController@githubHook');
-});
+Route::post('/github-hook', 'ApiController@githubHook');
