@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', get_option('my_name') . "'s personal website")
+@section('title', get_option('my_name') . ' - Software Engineer')
 
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{ asset('plugins/vegas/vegas.min.css') }}">

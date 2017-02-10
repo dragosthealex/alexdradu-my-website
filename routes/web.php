@@ -14,11 +14,8 @@
 // User routes
 Route::get('/', 'HomeController@index');
 Route::get('/projects/{slug}', 'HomeController@projectSinlge');
+Route::get('/cv', 'HomeController@cv');
 
-// TODO: remove this
-Route::get('/home', function () {
-  return redirect('/settings');
-});
 // Auth routes
 Auth::routes();
 

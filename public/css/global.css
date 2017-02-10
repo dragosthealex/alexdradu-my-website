@@ -284,6 +284,31 @@ form {
   opacity: 0;
 }
 /* /forms */
+/* cards */
+.content-card {
+  margin: 20px auto 0;
+  background: #fafafa;
+  border-radius: 2px;
+  box-shadow: 0 1px 5px -2px rgba(0,0,0,0.5);
+  max-width: 800px;
+}
+.content-card.fluid {
+  max-width: 100%;
+}
+.content-card:last-child {
+  margin-bottom: 20px;
+}
+.card-header {
+  padding: 0 16px;
+  overflow: hidden;
+}
+.card-header .btn {
+  margin-left: 20px;
+}
+.card-content {
+  padding: 16px;
+}
+/* /cards */
 /* social icons */
 .social-icons {
   list-style-type: none;

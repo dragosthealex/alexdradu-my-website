@@ -11,7 +11,6 @@ class HomeController extends Controller
     /**
     * Show the landing page.
     *
-    * @param String
     * @return \Illuminate\Http\Response
     */
     public function index() {
@@ -29,5 +28,14 @@ class HomeController extends Controller
     public function projectSingle($slug) {
       return view('projects.index')
               ->with('project', Project::where('slug', $slug)->first());
+    }
+
+    /**
+    * Show the page for cv.
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function cv() {
+      return view('cv');
     }
 }
