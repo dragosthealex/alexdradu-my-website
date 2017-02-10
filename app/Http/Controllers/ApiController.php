@@ -14,7 +14,7 @@ class ApiController extends Controller
       // Update git
       chdir('../');
       ob_start();
-      echo shell_exec('echo "' . env('GIT_LOCAL_USER_PASS') . '" | sudo -S git pull');
+      echo shell_exec('sudo -u pi git pull');
       echo shell_exec('php artisan clear-compiled');
       echo shell_exec('composer dump-autoload');
       echo shell_exec('php artisan optimize');
