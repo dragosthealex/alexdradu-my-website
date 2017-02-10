@@ -14,13 +14,16 @@ class ApiController extends Controller
       // Update git
       $path = realpath(dirname(__FILE__) . '../../../');
       chdir($path);
-      shell_exec('git pull');
-      shell_exec('php artisan clear-compiled');
-      shell_exec('composer dump-autoload');
-      shell_exec('php artisan optimize');
+      ob_start();
+      echo shell_exec('git pull');
+      echo shell_exec('php artisan clear-compiled');
+      echo shell_exec('composer dump-autoload');
+      echo shell_exec('php artisan optimize');
+      echo ob_end_flush();
+      echo "Done.";
     } else if($pass == $signature) {
       echo "Updated branch " . end(explode('/', $request->input('ref')));
-    } else
+    } else {
       echo "Wrong pass. Date: " . date('d.m.Y h:i:s');
     }
   }
