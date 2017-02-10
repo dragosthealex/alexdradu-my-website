@@ -3,25 +3,31 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Project;
+use App\Tag;
 
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
+    * Show the landing page.
+    *
+    * @param String
+    * @return \Illuminate\Http\Response
+    */
+    public function index() {
+      return view('home')
+              ->with('tags', App\Tag::all())
+              ->with('projects', App\Project::with('tags')->get());
     }
 
     /**
-     * Show the settings dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function settings() {
-      
+    * Show the page for a single project.
+    *
+    * @param String
+    * @return \Illuminate\Http\Response
+    */
+    public function projectSingle($slug) {
+      return view('projects.index')
+              ->with('project', App\Project::where('slug', $slug)->first());
     }
 }

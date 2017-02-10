@@ -12,23 +12,21 @@
 */
 
 // User routes
-Route::get('/', function () {
-  return view('home')
-          ->with('tags', App\Tag::all())
-          ->with('projects', App\Project::with('tags')->get());
-});
-Route::get('/projects/{slug}', function($slug) {
-  return view('projects.index')
-          ->with('project', App\Project::where('slug', $slug)->first());
-});
-
-// Auth
-Auth::routes();
+Route::get('/', 'HomeController@index');
+Route::get('/projects/{slug}', 'HomeController@projectSinlge');
 
 // TODO: remove this
 Route::get('/home', function () {
   return redirect('/settings');
 });
+
+// Api routes
+Route::group(['prefix'=>'api'], function() {
+  Route::post('/github-hook', 'ApiController@githubHook');
+});
+
+// Auth routes
+Auth::routes();
 
 // Admin routes
 Route::group(['prefix' => '/settings', 'middleware' => 'auth'], function() {
@@ -36,11 +34,11 @@ Route::group(['prefix' => '/settings', 'middleware' => 'auth'], function() {
     return redirect('/settings/projects');
   });
   Route::group(['prefix' => 'projects', 'middleware' => 'auth'], function() {
-    Route::get('/', 'ProjectController@index');
-    Route::get('/add', 'ProjectController@create');
-    Route::post('/add', 'ProjectController@store');
-    Route::get('/edit/{id}', 'ProjectController@edit');
-    Route::post('/edit/{id}', 'ProjectController@update');
-    Route::get('/delete/{id}', 'ProjectController@destroy');
+    Route::get('/', 'Admin\ProjectController@index');
+    Route::get('/add', 'Admin\ProjectController@create');
+    Route::post('/add', 'Admin\ProjectController@store');
+    Route::get('/edit/{id}', 'Admin\ProjectController@edit');
+    Route::post('/edit/{id}', 'Admin\ProjectController@update');
+    Route::get('/delete/{id}', 'Admin\ProjectController@destroy');
   });
 });
