@@ -19,9 +19,13 @@ Route::get('/projects/{slug}', 'HomeController@projectSinlge');
 Route::get('/home', function () {
   return redirect('/settings');
 });
-
 // Auth routes
 Auth::routes();
+
+// Demo routes
+Route::group(['prefix' => '/demo'], function() {
+  Route::get('/corridor-putin', 'DemoController@corridorPutin');
+});
 
 // Admin routes
 Route::group(['prefix' => '/settings', 'middleware' => 'auth'], function() {

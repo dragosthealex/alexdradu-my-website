@@ -41,6 +41,7 @@
 
 section#landing-section {
     overflow: hidden;
+    background-color: rgba(0,0,0,0.75);
 }
 .vegas-wrapper, .vegas-slide {
     margin: -5px!important;
