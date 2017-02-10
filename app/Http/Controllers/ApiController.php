@@ -24,6 +24,7 @@ class ApiController extends Controller
       // Other branch updates
       echo "Updated branch " . explode('/', $request->input('ref'))[2];
     } else {
+      // Test
       // TODO: maybe log ?
       echo "Wrong pass. Date: " . date('d.m.Y h:i:s');
     }
