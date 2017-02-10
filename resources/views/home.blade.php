@@ -314,71 +314,73 @@ section#landing-section {
         </ul>
       </div>
     </div>
-    <div class="isotope-grid">
-      @foreach($projects as $project)
-        <div class="item-wrapper col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12 <?php foreach($project->tags as $tag){echo $tag->name." ";}?>">
-          <div class="has-cover item-card flip">
-            <div class="front">
-              <div class="card-cover" style="background-image:url('<?=$project->getCover()?>');"></div>
-              <h2 class="card-title"><a><?=$project->name?></a></h2>
-              <h2 class="card-date">
-                <a>
-                  @if($project->date_alt)
-                    <?=$project->date_alt?>
-                  @else
-                    <?=date('l, j F Y', strtotime($project->date))?>
-                  @endif
-                </a>
-              </h2>
-            </div>
-            <div class="back">
-              <div class="card-content">
-                <div class="card-body">
-                  <h2 class="card-title"><a><?=$project->name?></a></h2>
-                  <h4 class="card-date">
+      <div class="container">
+      <div class="isotope-grid">
+        @foreach($projects as $project)
+          <div class="item-wrapper col-md-4 col-sm-6 col-xs-12 <?php foreach($project->tags as $tag){echo $tag->name." ";}?>">
+            <div class="has-cover item-card flip">
+              <div class="front">
+                <div class="card-cover" style="background-image:url('<?=$project->getCover()?>');"></div>
+                <h2 class="card-title"><a><?=$project->name?></a></h2>
+                <h2 class="card-date">
+                  <a>
                     @if($project->date_alt)
                       <?=$project->date_alt?>
                     @else
                       <?=date('l, j F Y', strtotime($project->date))?>
                     @endif
-                  </h4>
-                  <p class="card-description">
-                    <?=$project->short_description?>
+                  </a>
+                </h2>
+              </div>
+              <div class="back">
+                <div class="card-content">
+                  <div class="card-body">
+                    <h2 class="card-title"><a><?=$project->name?></a></h2>
+                    <h4 class="card-date">
+                      @if($project->date_alt)
+                        <?=$project->date_alt?>
+                      @else
+                        <?=date('l, j F Y', strtotime($project->date))?>
+                      @endif
+                    </h4>
+                    <p class="card-description">
+                      <?=$project->short_description?>
+                      @if(false)
+                        <?=substr("asdasdasdasd", 0, 100)?>... <a href="{{ url('events/' . $event->id) }}">More</a>
+                      @endif
+                    </p>
+                  </div>
+                  <hr>
+                  <div class="card-footer">
                     @if(false)
-                      <?=substr("asdasdasdasd", 0, 100)?>... <a href="{{ url('events/' . $event->id) }}">More</a>
+                    <a class="btn btn-primary flat" href="#"
+                      data-ripple-color="#FFE0B2">
+                      <span>More</span>
+                    </a>
                     @endif
-                  </p>
-                </div>
-                <hr>
-                <div class="card-footer">
-                  @if(false)
-                  <a class="btn btn-primary flat" href="#"
-                    data-ripple-color="#FFE0B2">
-                    <span>More</span>
-                  </a>
-                  @endif
-                  @if($project->git)
-                  <a class="btn btn-default flat has-icon" href="<?=$project->git?>"
-                    data-ripple-color="#FFE0B2"
-                    target="_blank">
-                    <span class="btn-icon"
-                          style="background-image:url('{{ asset('img/icons/github.svg') }}')">
-                    </span>
-                    <span>Git</span>
-                  </a>
-                  @endif
-                  @if(count($project->urls))
-                  <a class="btn btn-default flat" href="<?=$project->urls[0]?>"
-                    data-ripple-color="#FFE0B2">
-                    <span>URL</span>
-                  </a>
-                  @endif
+                    @if($project->git)
+                    <a class="btn btn-default flat has-icon" href="<?=$project->git?>"
+                      data-ripple-color="#FFE0B2"
+                      target="_blank">
+                      <span class="btn-icon"
+                            style="background-image:url('{{ asset('img/icons/github.svg') }}')">
+                      </span>
+                      <span>Git</span>
+                    </a>
+                    @endif
+                    @if(count($project->urls))
+                    <a class="btn btn-default flat" href="<?=$project->urls[0]?>"
+                      data-ripple-color="#FFE0B2">
+                      <span>URL</span>
+                    </a>
+                    @endif
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      @endforeach
+        @endforeach
+      </div>
     </div>
   </div>
 </section>
@@ -422,7 +424,7 @@ $(document).ready(function() {
       $("#main-header").removeClass('sticky');
     }
     // Apply fip
-    $(".item-card.flip").flip();
+    $(".item-card.flip").flip({trigger: 'hover'});
     // Apply isotope
     $grid = $('.isotope-grid').isotope({
       // options

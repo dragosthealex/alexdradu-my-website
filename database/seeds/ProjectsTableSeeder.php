@@ -136,8 +136,8 @@ class ProjectsTableSeeder extends Seeder
         "short_description"   =>  "Unity FPS game with a Soviet twist. Spend a day in the shoes of the great Putin and kill some enemies around Kremlin.",
         "date"                =>  "2015-08-24",
         "date_alt"            =>  "",
-        "git"                 =>  "https://github.com/dragosthealex/leap-music",
-        "urls"                =>  "['http://www.pyrogoats.dx.am']"
+        "git"                 =>  "https://github.com/dragosthealex/corridorPutin",
+        "urls"                =>  "['http://www.alexdradu.com/demo/corridor-putin']"
       ]);
       $this->addTags($proj, ['unity3d', 'c#', 'game']);
 
