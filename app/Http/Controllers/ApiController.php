@@ -12,8 +12,7 @@ class ApiController extends Controller
     $pass = 'sha1=' . hash_hmac('sha1', $payload, env('GIT_WEBHOOK_KEY', 'key'));
     if($pass == $signature and $request->input('ref') == 'refs/heads/production') {
       // Update git
-      $path = realpath(dirname(__FILE__) . '../../../');
-      chdir($path);
+      chdir('../');
       ob_start();
       echo shell_exec('git pull');
       echo shell_exec('php artisan clear-compiled');
