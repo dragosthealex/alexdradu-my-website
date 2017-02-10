@@ -21,8 +21,10 @@ class ApiController extends Controller
       echo ob_end_flush();
       echo "Done.";
     } else if($pass == $signature) {
+      // Other branch updates
       echo "Updated branch " . explode('/', $request->input('ref'))[2];
     } else {
+      // TODO: maybe log ?
       echo "Wrong pass. Date: " . date('d.m.Y h:i:s');
     }
   }
