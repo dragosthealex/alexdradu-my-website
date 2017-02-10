@@ -10,7 +10,7 @@ class ApiController extends Controller
     $signature = $request->header('X-Hub-Signature');
     $payload = json_encode($request->all(), JSON_UNESCAPED_SLASHES);
     $pass = 'sha1=' . hash_hmac('sha1', $payload, env('GIT_WEBHOOK_KEY', 'key'));
-    if($pass == $signature) {
+    if($pass == $signature and $request->input('ref') == 'refs/heads/production') {
       // Update git
       $path = realpath(dirname(__FILE__) . '../../../');
       chdir($path);
@@ -18,7 +18,9 @@ class ApiController extends Controller
       shell_exec('php artisan clear-compiled');
       shell_exec('composer dump-autoload');
       shell_exec('php artisan optimize');
-    } else {
+    } else if($pass == $signature) {
+      echo "Updated branch " . end(explode('/', $request->input('ref')));
+    } else
       echo "Wrong pass. Date: " . date('d.m.Y h:i:s');
     }
   }
