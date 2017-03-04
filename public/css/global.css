@@ -26,6 +26,9 @@ div.img, .btn, h1, h2, h3, img {
   cursor: default;
   font-family: 'helvetica_neue', sans-serif;
 }
+.no-padding {
+  padding: 0;
+}
 .link {
   cursor: pointer;
 }

@@ -266,6 +266,9 @@ section#landing-section {
     height: 150px;
     width: 150px;
   }
+  .item-wrapper {
+    padding: 0;
+  }
 }
 </style>
 @endsection
@@ -302,7 +305,7 @@ section#landing-section {
   <div class="container-fluid">
     <h1 class="section-title">Projects</h1>
     <div class="isotope-controls-bar">
-      <div class="container">
+      <div class="container no-padding">
         <ul class="isotope-controls">
           <li><a data-ripple-color="#C5CAE9"
             class="btn flat btn-default active" data-filter="*"><span>All</span></a>
@@ -315,7 +318,7 @@ section#landing-section {
         </ul>
       </div>
     </div>
-      <div class="container">
+      <div class="container no-padding">
       <div class="isotope-grid">
         @foreach($projects as $project)
           <div class="item-wrapper col-md-4 col-sm-6 col-xs-12 <?php foreach($project->tags as $tag){echo $tag->name." ";}?>">
