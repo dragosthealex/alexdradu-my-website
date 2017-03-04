@@ -431,7 +431,7 @@ $(document).ready(function() {
       $("#main-header").removeClass('sticky');
     }
     // Apply fip
-    $(".item-card.flip").flip({trigger: 'click'});
+    $(".item-card.flip").flip({trigger: 'hover'});
     // Apply isotope
     $grid = $('.isotope-grid').isotope({
       // options
