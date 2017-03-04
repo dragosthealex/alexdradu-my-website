@@ -456,10 +456,15 @@ $(document).ready(function() {
     // Lander slider
     $("#landing-section").vegas({
         slides: [
-            { src: "{{ asset('img/bg/landing-1.jpg') }}" },
-            { src: "{{ asset('img/bg/landing-2.jpg') }}" },
-            { src: "{{ asset('img/bg/landing-3.jpg') }}" },
-            { src: "{{ asset('img/bg/landing-4.jpg') }}" }
+          <?php
+            $files = scandir('photos/1/bg');
+            foreach($files as $file) {
+              if(in_array($file, ['default.png', '.', '..'])) {
+                continue;
+              }
+          ?>
+            { src: "{{ asset('photos/1/bg/' . $file) }}" },
+          <?php } ?>
         ],
     });
     // Sticky class to navbar
