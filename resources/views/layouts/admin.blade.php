@@ -92,6 +92,9 @@
         filebrowserBrowseUrl: "{{ url('/laravel-filemanager?type=Files') }}",
         filebrowserUploadUrl: "{{ url('/laravel-filemanager/upload?type=Files&_token=' . csrf_token()) }}",
       });
+      CKEDITOR.on('instanceReady', function() {
+        $("#settings-section .same-height").matchHeight();
+      });
       setTimeout(function(){
         $("#settings-section .same-height").matchHeight();
       }, 500);

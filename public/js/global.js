@@ -76,7 +76,6 @@ $(document).ready(function() {
   $(".form-group .form-control[type='file']").on("change", function() {
     $(this).prev("input").val($(this).val());
     onBlurInput($(this).prev("input"));
-    console.log("changed: " + $(this).val())
   });
   $(document).click(function(e) {
     checkFileInput(e.target);
@@ -84,7 +83,6 @@ $(document).ready(function() {
   // Check if value already set
   setTimeout(function(){
     $("input, textarea").each(function() {
-      console.log($(this));
       onFocusInput($(this));
       onBlurInput($(this));
     });
