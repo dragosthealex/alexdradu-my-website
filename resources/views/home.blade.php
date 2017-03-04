@@ -41,6 +41,9 @@
 
 section#landing-section {
     overflow: hidden;
+    background-image: url("{{ asset('photos/1/bg/default.png') }}");
+    background-position: center;
+    background-size: cover;
     background-color: rgba(0,0,0,0.75);
 }
 .vegas-wrapper, .vegas-slide {
@@ -410,6 +413,46 @@ $(document).ready(function() {
                                           * 2/5);
   },
   init = function() {
+    $("#landing-section .container").css("margin-top", $(window).height()
+                                          * 33/100);
+    // Apply fip
+    $(".item-card.flip").flip({trigger: 'hover'});
+    // Apply isotope
+    $grid = $('.isotope-grid').isotope({
+    // options
+    itemSelector: '.item-wrapper',
+    layoutMode: 'fitRows'
+    });
+    // Isotope controls
+    $('.isotope-controls .btn').click(function() {
+    $('.isotope-controls .btn').removeClass('active');
+    $(this).addClass('active');
+    var filterValue = $(this).attr('data-filter');
+    $grid.isotope({filter: filterValue})
+    });
+  }
+  mobileInit = function() {
+    // Always sticky
+    $("#main-header").addClass('sticky');
+    // Btn scrolls
+    $(".btn-scroll").click(function() {
+      var el = $("#" + $(this).attr('data-scroll-to'));
+      $('html, body').scrollTop(el.offset().top);
+    });
+    // If we have a tag
+    <?php if(isset($_GET['tag'])) { ?>
+    var tag = '<?=$_GET['tag']?>';
+    // Scroll to projects
+    setTimeout(function() {
+      $('html, body').scrollTop($("#projects-section").offset().top);
+    }, 500);
+    // Filter by projects
+    $grid.isotope({filter: '.' + tag});
+    $('.isotope-controls .btn').removeClass('active');
+    $('.isotope-controls .btn[data-filter=".' + tag + '"]').addClass('active');
+    <?php } ?>
+  },
+  desktopInit = function() {
     // Lander slider
     $("#landing-section").vegas({
         slides: [
@@ -419,8 +462,6 @@ $(document).ready(function() {
             { src: "{{ asset('img/bg/landing-4.jpg') }}" }
         ],
     });
-    $("#landing-section .container").css("margin-top", $(window).height()
-                                          * 33/100);
     // Sticky class to navbar
     $(window).scroll(function() {
       if($(window).scrollTop() > 0) {
@@ -434,21 +475,6 @@ $(document).ready(function() {
     } else {
       $("#main-header").removeClass('sticky');
     }
-    // Apply fip
-    $(".item-card.flip").flip({trigger: 'hover'});
-    // Apply isotope
-    $grid = $('.isotope-grid').isotope({
-      // options
-      itemSelector: '.item-wrapper',
-      layoutMode: 'fitRows'
-    });
-    // Isotope controls
-    $('.isotope-controls .btn').click(function() {
-      $('.isotope-controls .btn').removeClass('active');
-      $(this).addClass('active');
-      var filterValue = $(this).attr('data-filter');
-      $grid.isotope({filter: filterValue})
-    });
     // Btn scrolls
     $(".btn-scroll").click(function() {
       var el = $("#" + $(this).attr('data-scroll-to'));
@@ -472,7 +498,13 @@ $(document).ready(function() {
     <?php } ?>
   };
   $(window).resize(calledOnResize);
+  // Depending if mobile or not
   init();
+  if(isMobile) {
+    mobileInit();
+  } else {
+    desktopInit();
+  }
 });
 
 </script>
