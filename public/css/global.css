@@ -410,11 +410,28 @@ form {
 
 /* /footer */
 @media(max-width: 768px) {
+  .header .navbar {
+    margin-bottom: 0;
+  }
+  .card-content.post figure {
+    margin-left: 0;
+    margin-right: 0;
+  }
   .card-content.post figure img {
     width: 100%!important;
     height: auto!important;
   }
   .section.padding {
     padding: 30px 0;
+  }
+  .main-content.container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .main-content .content-card:first-child {
+    margin-top: 0;
+  }
+  .main-content .content-card:last-child {
+    margin-bottom: 0;
   }
 }
