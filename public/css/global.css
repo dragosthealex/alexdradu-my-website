@@ -29,6 +29,11 @@ div.img, .btn, h1, h2, h3, img {
 .link {
   cursor: pointer;
 }
+.header {
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
 .header .navbar {
   background-color: #3F51B5;
   border: none;
@@ -62,6 +67,9 @@ div.img, .btn, h1, h2, h3, img {
 }
 .header .navbar-right {
   margin-top: 10px;
+}
+.main-content {
+  padding-top: 50px;
 }
 .section.full-height {
   min-height: 100vh;
@@ -305,9 +313,44 @@ form {
 .card-header .btn {
   margin-left: 20px;
 }
+
+.card-header-image img{
+  max-height: 300px;
+  object-fit: cover;
+  width: 100%;
+}
+
 .card-content {
   padding: 16px;
 }
+.card-content.post {
+  padding: 26px;
+}
+.card-content.post p {
+  line-height: 1.6;
+  font-size: 15px;
+  text-align: justify;
+}
+.card-content.post h1:first-child {
+  margin-bottom: 30px;
+}
+.card-content.post figure {
+  float: left;
+  margin: 6px 16px;
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  line-height: 1.6;
+}
+.post .tag-list {
+  margin-top: 20px;
+}
+.post .tag-list h4 {
+  color: #777;
+}
+.post .tag-list .tag {
+}
+
 /* /cards */
 /* social icons */
 .social-icons {

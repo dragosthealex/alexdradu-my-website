@@ -353,12 +353,6 @@ section#landing-section {
                   </div>
                   <hr>
                   <div class="card-footer">
-                    @if($project->description)
-                    <a class="btn btn-primary flat" data-ripple-color="#FFE0B2"
-                      href="{{ url('/projects/' . $project->slug) }}">
-                      <span>More</span>
-                    </a>
-                    @endif
                     @if($project->git)
                     <a class="btn btn-default flat has-icon"
                       href="<?=$project->git?>" data-ripple-color="#FFE0B2"
@@ -369,16 +363,23 @@ section#landing-section {
                       <span>Git</span>
                     </a>
                     @endif
-                    @if(isset($project->urls['demo']))
+                    @if(isset($project->urls['demo']) && $project->urls['demo'])
                     <a class="btn btn-default flat" data-ripple-color="#FFE0B2"
                       href="<?=$project->urls['demo']?>" target="_blank">
                       <span>Demo</span>
                     </a>
                     @endif
-                    @if(isset($project->urls['external']))
+                    @if(isset($project->urls['external'])
+                      && $project->urls['external'])
                     <a class="btn btn-default flat" data-ripple-color="#FFE0B2"
-                      href="<?=$project->urls['external']?>">
+                      href="<?=$project->urls['external']?>" target="_blank">
                       <span>URL</span>
+                    </a>
+                    @endif
+                    @if($project->description)
+                    <a class="btn btn-primary flat" data-ripple-color="#FFE0B2"
+                      href="{{ url('/projects/' . $project->slug) }}">
+                      <span>More</span>
                     </a>
                     @endif
                   </div>
@@ -452,6 +453,20 @@ $(document).ready(function() {
           scrollTop: el.offset().top
       }, 1000);
     });
+    // If we have a tag
+    <?php if(isset($_GET['tag'])) { ?>
+    var tag = '<?=$_GET['tag']?>';
+    // Scroll to projects
+    setTimeout(function() {
+      $('html, body').animate({
+        scrollTop: $("#projects-section").offset().top
+      }, 1000);
+    }, 500);
+    // Filter by projects
+    $grid.isotope({filter: '.' + tag});
+    $('.isotope-controls .btn').removeClass('active');
+    $('.isotope-controls .btn[data-filter=".' + tag + '"]').addClass('active');
+    <?php } ?>
   };
   $(window).resize(calledOnResize);
   init();

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Project;
 use App\Tag;
 use Auth;
+use Validator;
 
 class ProjectController extends Controller
 {

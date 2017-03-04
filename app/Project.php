@@ -29,6 +29,8 @@ class Project extends Model
     if(!json_decode($value, 1)) {
       $value = preg_replace("/\'/", "\"", $value);
       $value = json_decode($value, 1);
+    } else {
+      $value = json_decode($value, 1);
     }
     if(!$value) {
       return [];
@@ -37,17 +39,17 @@ class Project extends Model
   }
 
   public function getUrl($key) {
-    $urls = $this->urls;
-    if(isset($urls[$key])) {
-      return $urls[$key];
+    $surls = $this->urls;
+    if(isset($surls[$key])) {
+      return $surls[$key];
     }
     return "";
   }
 
   public function setUrl($key, $val) {
-    $urls = $this->urls;
-    $urls[$key] = $val;
-    $this->urls = json_encode($urls);
+    $surls = $this->urls;
+    $surls[$key] = $val;
+    $this->urls = json_encode($surls, JSON_UNESCAPED_SLASHES);
   }
 
   // Check if has cover
