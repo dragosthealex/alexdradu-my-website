@@ -18,7 +18,7 @@ class ProjectsTableSeeder extends Seeder
         "short_description"   =>  "My personal website (this one), made with PHP Laravel framework.",
         "date"                =>  "2017-02-07",
         "git"                 =>  "https://github.com/dragosthealex/alexdradu-my-website",
-        "urls"                =>  "['http://www.alexdradu.com']"
+        "urls"                =>  "{'external': 'http://www.alexdradu.com'}"
       ]);
       $this->addTags($proj, ['laravel', 'php', 'css', 'html', 'javascript']);
 
@@ -37,7 +37,7 @@ class ProjectsTableSeeder extends Seeder
         "date"                =>  "2017-02-02",
         "date_alt"            =>  "August 2016 - Ongoing",
         "git"                 =>  "https://github.com/dragosthealex/LudumDare36",
-        "urls"                =>  "[]"
+        "urls"                =>  "{}"
       ]);
       $this->addTags($proj, ['unity3d', 'c#', 'game']);
 
@@ -47,7 +47,7 @@ class ProjectsTableSeeder extends Seeder
         "date"                =>  "2017-01-29",
         "date_alt"            =>  "",
         "git"                 =>  "https://github.com/thee-engineer/cambridgehack-2017",
-        "urls"                =>  "['https://devpost.com/software/cognitive-crowds-d4zchg']"
+        "urls"                =>  "{'external': 'https://devpost.com/software/cognitive-crowds-d4zchg'}"
       ]);
       $this->addTags($proj, ['machine learning', 'python', 'php', 'winner', 'javascript', 'css', 'hackathon']);
 
@@ -57,7 +57,7 @@ class ProjectsTableSeeder extends Seeder
         "date"                =>  "2017-01-01",
         "date_alt"            =>  "2016 - 2017",
         "git"                 =>  "",
-        "urls"                =>  "['http://www.aspirezhigh.com']"
+        "urls"                =>  "{'external': 'http://www.aspirezhigh.com'}"
       ]);
       $this->addTags($proj, ['laravel', 'php', 'javascript', 'css', 'html', 'python', 'production']);
 
@@ -67,7 +67,7 @@ class ProjectsTableSeeder extends Seeder
         "date"                =>  "2016-11-27",
         "date_alt"            =>  "",
         "git"                 =>  "https://github.com/dragosthealex/hack-kings3.0",
-        "urls"                =>  "['https://devpost.com/software/tweetpredict']"
+        "urls"                =>  "{'external': 'https://devpost.com/software/tweetpredict'}"
       ]);
       $this->addTags($proj, ['machine learning', 'neural networks', 'python', 'hackathon']);
 
@@ -77,7 +77,7 @@ class ProjectsTableSeeder extends Seeder
         "date"                =>  "2016-11-20",
         "date_alt"            =>  "",
         "git"                 =>  "https://github.com/thee-engineer/oxfordhack-2016",
-        "urls"                =>  "['https://devpost.com/software/autodj-i87zrp']"
+        "urls"                =>  "{'external': 'https://devpost.com/software/autodj-i87zrp'}"
       ]);
       $this->addTags($proj, ['machine learning', 'neural networks', 'python', 'winner', 'hackathon', ]);
 
@@ -87,7 +87,7 @@ class ProjectsTableSeeder extends Seeder
         "date"                =>  "2016-11-13",
         "date_alt"            =>  "",
         "git"                 =>  "https://github.com/dragosthealex/great-uni-hack-2016",
-        "urls"                =>  "['https://devpost.com/software/great-uni-hack-2016']"
+        "urls"                =>  "{'external': 'https://devpost.com/software/great-uni-hack-2016'}"
       ]);
       $this->addTags($proj, ['android', 'java', 'php', 'winner', 'hackathon']);
 
@@ -97,7 +97,7 @@ class ProjectsTableSeeder extends Seeder
         "date"                =>  "2016-11-4",
         "date_alt"            =>  "",
         "git"                 =>  "",
-        "urls"                =>  "[]"
+        "urls"                =>  "{}"
       ]);
       $this->addTags($proj, ['c++', 'python', 'hackathon', 'winner']);
 
@@ -107,7 +107,7 @@ class ProjectsTableSeeder extends Seeder
         "date"                =>  "2016-09-01",
         "date_alt"            =>  "July 2016 - September 2016",
         "git"                 =>  "https://github.com/dragosthealex/manchester_su_events",
-        "urls"                =>  "[]"
+        "urls"                =>  "{}"
       ]);
       $this->addTags($proj, ['php', 'laravel', 'html', 'javascript', 'css', 'production']);
 
@@ -117,7 +117,7 @@ class ProjectsTableSeeder extends Seeder
         "date"                =>  "2015-12-12",
         "date_alt"            =>  "",
         "git"                 =>  "https://github.com/dragosthealex/hackkings_2015",
-        "urls"                =>  "['https://devpost.com/software/z0ne-challenge']"
+        "urls"                =>  "{'external': 'https://devpost.com/software/z0ne-challenge'}"
       ]);
       $this->addTags($proj, ['android', 'game', 'ionic', 'javascript', 'css', 'winner', 'hackathon']);
 
@@ -127,7 +127,7 @@ class ProjectsTableSeeder extends Seeder
         "date"                =>  "2015-12-06",
         "date_alt"            =>  "",
         "git"                 =>  "https://github.com/andreimuntean/GreatUniHack2015",
-        "urls"                =>  "['https://devpost.com/software/hi-dare']"
+        "urls"                =>  "{'external': 'https://devpost.com/software/hi-dare'}"
       ]);
       $this->addTags($proj, ['android', 'ionic', 'javascript', 'php', 'hackathon', 'winner']);
 
@@ -137,7 +137,7 @@ class ProjectsTableSeeder extends Seeder
         "date"                =>  "2015-08-24",
         "date_alt"            =>  "",
         "git"                 =>  "https://github.com/dragosthealex/corridorPutin",
-        "urls"                =>  "['http://www.alexdradu.com/demo/corridor-putin']"
+        "urls"                =>  "{'demo': 'http://www.alexdradu.com/demo/corridor-putin'}"
       ]);
       $this->addTags($proj, ['unity3d', 'c#', 'game']);
 
@@ -147,7 +147,7 @@ class ProjectsTableSeeder extends Seeder
         "date"                =>  "2015-06-09",
         "date_alt"            =>  "",
         "git"                 =>  "https://github.com/dragosthealex/leap-music",
-        "urls"                =>  "[]"
+        "urls"                =>  "{}"
       ]);
       $this->addTags($proj, ['unity3d', 'c#', 'hackathon', 'winner']);
 
@@ -157,7 +157,7 @@ class ProjectsTableSeeder extends Seeder
         "date"                =>  "2014-12-7",
         "date_alt"            =>  "",
         "git"                 =>  "https://github.com/dragosthealex/bloomburgers",
-        "urls"                =>  "[]"
+        "urls"                =>  "{}"
       ]);
       $this->addTags($proj, ['java', 'game', 'hackathon']);
 
@@ -167,7 +167,7 @@ class ProjectsTableSeeder extends Seeder
         "date"                =>  "2015-04-25",
         "date_alt"            =>  "September 2014 - April 2015",
         "git"                 =>  "https://github.com/dragosthealex/roomies",
-        "urls"                =>  "[]"
+        "urls"                =>  "{}"
       ]);
       $this->addTags($proj, ['php', 'html', 'css', 'javascript']);
 
@@ -177,7 +177,7 @@ class ProjectsTableSeeder extends Seeder
         "date"                =>  "2014-12-7",
         "date_alt"            =>  "",
         "git"                 =>  "https://github.com/dragosthealex/strathhack_2014_mathpy",
-        "urls"                =>  "[]"
+        "urls"                =>  "{}"
       ]);
       $this->addTags($proj, ['python', 'winner', 'hackathon', 'game']);
     }

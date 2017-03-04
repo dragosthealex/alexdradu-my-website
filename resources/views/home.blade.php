@@ -129,6 +129,7 @@ section#landing-section {
 }
 .item-card .card-content {
   background-color: #fefefe;
+  padding: 0;
 }
 .item-card .card-title {
   bottom: 20px;
@@ -359,8 +360,8 @@ section#landing-section {
                     </a>
                     @endif
                     @if($project->git)
-                    <a class="btn btn-default flat has-icon" href="<?=$project->git?>"
-                      data-ripple-color="#FFE0B2"
+                    <a class="btn btn-default flat has-icon"
+                      href="<?=$project->git?>" data-ripple-color="#FFE0B2"
                       target="_blank">
                       <span class="btn-icon"
                             style="background-image:url('{{ asset('img/icons/github.svg') }}')">
@@ -368,9 +369,15 @@ section#landing-section {
                       <span>Git</span>
                     </a>
                     @endif
-                    @if(count($project->urls))
-                    <a class="btn btn-default flat" href="<?=$project->urls[0]?>"
-                      data-ripple-color="#FFE0B2">
+                    @if(isset($project->urls['demo']))
+                    <a class="btn btn-default flat" data-ripple-color="#FFE0B2"
+                      href="<?=$project->urls['demo']?>" target="_blank">
+                      <span>Demo</span>
+                    </a>
+                    @endif
+                    @if(isset($project->urls['external']))
+                    <a class="btn btn-default flat" data-ripple-color="#FFE0B2"
+                      href="<?=$project->urls['external']?>">
                       <span>URL</span>
                     </a>
                     @endif
@@ -424,7 +431,7 @@ $(document).ready(function() {
       $("#main-header").removeClass('sticky');
     }
     // Apply fip
-    $(".item-card.flip").flip({trigger: 'hover'});
+    $(".item-card.flip").flip({trigger: 'click'});
     // Apply isotope
     $grid = $('.isotope-grid').isotope({
       // options

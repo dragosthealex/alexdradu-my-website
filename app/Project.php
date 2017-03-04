@@ -14,7 +14,6 @@ class Project extends Model
    */
    protected $table = 'projects';
 
-
   /**
    * The roles that belong to the user.
    */
@@ -37,6 +36,20 @@ class Project extends Model
     return $value;
   }
 
+  public function getUrl($key) {
+    $urls = $this->urls;
+    if(isset($urls[$key])) {
+      return $urls[$key];
+    }
+    return "";
+  }
+
+  public function setUrl($key, $val) {
+    $urls = $this->urls;
+    $urls[$key] = $val;
+    $this->urls = json_encode($urls);
+  }
+
   // Check if has cover
   public function hasCover() {
     if(file_exists('photos/1/projects/'.$this->slug.'/cover.png')) {
@@ -44,6 +57,7 @@ class Project extends Model
     }
     return false;
   }
+
   // Get cover / image
   public function getCover() {
     if($this->hasCover()) {

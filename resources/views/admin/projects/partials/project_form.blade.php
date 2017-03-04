@@ -5,22 +5,40 @@
   <div class="form-group col-sm-6">
     <label required="required" for="name" class="control-label">Name</label>
     <input type="text" class="form-control" name="name" id="name"
-      placeholder="Name" data-placeholder="Name" value="<?=$project?$project->name:old('name')?>">
+      placeholder="Name" data-placeholder="Name"
+      value="<?=$project?$project->name:old('name')?>">
   </div>
   <div class="form-group col-sm-6">
     <label required="required" for="date" class="control-label">Date</label>
     <input type="text" class="form-control datepicker" name="date" id="date"
-      placeholder="Date" data-placeholder="Date"  value="<?=$project?$project->date:old('date')?>">
+      placeholder="Date" data-placeholder="Date"
+      value="<?=$project?$project->date:old('date')?>">
   </div>
   <div class="form-group col-sm-6">
     <label for="date_alt" class="control-label">Date (Alternative)</label>
     <input type="text" class="form-control" name="date_alt" id="date_alt"
-      placeholder="Date (Alternative)" data-placeholder="Date (Alternative)"  value="<?=$project?$project->date_alt:old('date_alt')?>">
+      placeholder="Date (Alternative)" data-placeholder="Date (Alternative)"
+      value="<?=$project?$project->date_alt:old('date_alt')?>">
   </div>
   <div class="form-group col-sm-12">
     <label for="git" class="control-label">Git URL</label>
     <input type="text" class="form-control" name="git" id="git"
-      placeholder="Git URL" data-placeholder="Git URL"  value="<?=$project?$project->git:old('git')?>">
+      placeholder="Git URL" data-placeholder="Git URL"
+      value="<?=$project?$project->git:old('git')?>">
+  </div>
+  <div class="form-group col-sm-12">
+    <label for="demo" class="control-label">Demo URL</label>
+    <input type="text" class="form-control" name="demo" id="demo"
+      placeholder="Demo URL" data-placeholder="Demo URL"
+      value="<?=$project && isset($project->urls['demo'])?
+                $project->urls['demo']:old('demo')?>">
+  </div>
+  <div class="form-group col-sm-12">
+    <label for="url1" class="control-label">URL 1</label>
+    <input type="text" class="form-control" name="url1" id="url1"
+      placeholder="URL 1" data-placeholder="URL 1"
+      value="<?=$project && isset($project->urls['external'])?
+                $project->urls['external']:old('url1')?>">
   </div>
   <div class="form-group has-textarea col-sm-12">
     <label for="short_description" class="control-label">Short Description</label>

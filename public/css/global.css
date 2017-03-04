@@ -179,8 +179,8 @@ div.img, .btn, h1, h2, h3, img {
 .btn.has-icon span:first-child {
   backface-visibility: hidden;
   display: block;
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   float: left;
   margin-right: 10px;
 }
