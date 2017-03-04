@@ -353,7 +353,7 @@ section#landing-section {
                   </div>
                   <hr>
                   <div class="card-footer">
-                    @if(false)
+                    @if($project->description)
                     <a class="btn btn-primary flat" href="#"
                       data-ripple-color="#FFE0B2">
                       <span>More</span>

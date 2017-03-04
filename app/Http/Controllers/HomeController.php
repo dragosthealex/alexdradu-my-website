@@ -25,9 +25,17 @@ class HomeController extends Controller
     * @param String
     * @return \Illuminate\Http\Response
     */
-    public function projectSingle($slug) {
-      return view('projects.index')
-              ->with('project', Project::where('slug', $slug)->first());
+    public function projectSingle($id_slug)
+    {
+        $project = Project::find($id_slug);
+        if(!$project) {
+          // Try by slug
+          $project = Project::where('slug', $id_slug);
+        }
+        if(!$project) {
+          abort(404);
+        }
+        return view('project-single')->with('project', $project);
     }
 
     /**

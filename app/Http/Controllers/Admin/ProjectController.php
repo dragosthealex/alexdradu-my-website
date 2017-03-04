@@ -41,6 +41,14 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         // TODO: validate stuff
+        $validator = Validator::make($request->all(),[
+          'name'              =>  'required|max:250',
+          'short_description' =>  'required|max:200',
+          'date_alt'          =>  'max:200',
+          'git'               =>  'max:200',
+          'demo'              =>  'max:200',
+          'url1'              =>  'max:200'
+        ]);
 
         $project = new Project();
         $project->name = $request->input('name');
@@ -48,6 +56,8 @@ class ProjectController extends Controller
         $project->description = $request->input('description');
         $project->short_description = $request->input('short_description');
         $project->git = $request->input('git');
+        $project->setUrl('demo', $request->input('demo'));
+        $project->setUrl('external', $request->input('url1'));
         $project->save();
         foreach(explode(',', $request->input('tags')) as $tagName) {
           $tag = Tag::where('name', strtolower($tagName))->first();
@@ -83,7 +93,15 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        //
+        $project = Project::find($id);
+        if(!$project) {
+          // Try by slug
+          $project = Project::where('slug', $id);
+        }
+        if(!$project) {
+          abort(404);
+        }
+        return view('project-single')->with('project', $project);
     }
 
     /**
