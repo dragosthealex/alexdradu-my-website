@@ -13,7 +13,7 @@
 
 // User routes
 Route::get('/', 'HomeController@index');
-Route::get('/projects/{id_slug}', 'HomeController@projectSinlge');
+Route::get('/projects/{id_slug}', 'HomeController@projectSingle');
 Route::get('/cv', 'HomeController@cv');
 
 // Auth routes

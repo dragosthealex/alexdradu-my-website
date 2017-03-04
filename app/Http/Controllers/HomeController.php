@@ -30,7 +30,7 @@ class HomeController extends Controller
         $project = Project::find($id_slug);
         if(!$project) {
           // Try by slug
-          $project = Project::where('slug', $id_slug);
+          $project = Project::where('slug', $id_slug)->first();
         }
         if(!$project) {
           abort(404);

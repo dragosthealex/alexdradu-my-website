@@ -354,8 +354,8 @@ section#landing-section {
                   <hr>
                   <div class="card-footer">
                     @if($project->description)
-                    <a class="btn btn-primary flat" href="#"
-                      data-ripple-color="#FFE0B2">
+                    <a class="btn btn-primary flat" data-ripple-color="#FFE0B2"
+                      href="{{ url('/projects/' . $project->slug) }}">
                       <span>More</span>
                     </a>
                     @endif
