@@ -40,7 +40,6 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        // TODO: validate stuff
         $validator = Validator::make($request->all(),[
           'name'              =>  'required|max:250',
           'short_description' =>  'required|max:200',
@@ -125,7 +124,14 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-      // TODO: validate stuff
+      $validator = Validator::make($request->all(),[
+        'name'              =>  'required|max:250',
+        'short_description' =>  'required|max:200',
+        'date_alt'          =>  'max:200',
+        'git'               =>  'max:200',
+        'demo'              =>  'max:200',
+        'url1'              =>  'max:200'
+      ]);
 
       $project = Project::find($id);
       $project->name = $request->input('name');
@@ -134,6 +140,8 @@ class ProjectController extends Controller
       $project->description = $request->input('description');
       $project->short_description = $request->input('short_description');
       $project->git = $request->input('git');
+      $project->setUrl('demo', $request->input('demo'));
+      $project->setUrl('external', $request->input('url1'));
       $project->save();
       $project->tags()->detach();
       foreach(explode(',', $request->input('tags')) as $tagName) {
