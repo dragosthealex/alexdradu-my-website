@@ -30,7 +30,9 @@ class ProjectObserver
     {
       // Delete stuff associated
       // Move photos to archive
-      rename("photos/".Auth::id()."/projects/".$project->slug, "archives/".Auth::id()."/".$project->slug."_".date('dmY_His'));
+      if(file_exists("photos/".Auth::id()."/projects/".$project->slug)) {
+        rename("photos/".Auth::id()."/projects/".$project->slug, "archives/".Auth::id()."/".$project->slug."_".date('dmY_His'));
+      }
       // Delete project and tags
       $project->tags()->delete();
     }
