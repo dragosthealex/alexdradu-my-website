@@ -26,6 +26,8 @@
 .header.sticky .navbar {
   background-color: #3F51B5;
   box-shadow: 0px 2px 5px 2px rgba(0,0,0,0.4);
+  -moz-box-shadow: 0px 2px 5px 2px rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0px 2px 5px 2px rgba(0,0,0,0.4);
   transition: all 0.4s ease-in;
 }
 .header.sticky .navbar .navbar-brand,
@@ -84,6 +86,8 @@ section#landing-section {
   background-color: transparent;
   border-radius: 50%;
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.5);
+  -moz-box-shadow: 0 1px 5px 0 rgba(0,0,0,0.5);
+  -webkit-box-shadow: 0 1px 5px 0 rgba(0,0,0,0.5);
   border: 1px solid rgba(255,255,255,0.5);
   float: right;
   margin-right: 20px;
@@ -236,6 +240,8 @@ section#landing-section {
   padding: 10px 0;
   background: #fafafa;
   box-shadow: 0 1px 3px -2px rgba(0,0,0,0.4);
+  -moz-box-shadow: 0 1px 3px -2px rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0 1px 3px -2px rgba(0,0,0,0.4);
 }
 .isotope-controls {
   list-style: none;

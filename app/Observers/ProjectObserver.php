@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Project;
+use Auth;
 
 class ProjectObserver
 {
