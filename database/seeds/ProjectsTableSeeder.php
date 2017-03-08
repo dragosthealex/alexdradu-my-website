@@ -180,6 +180,16 @@ class ProjectsTableSeeder extends Seeder
         "urls"                =>  "{}"
       ]);
       $this->addTags($proj, ['python', 'winner', 'hackathon', 'game']);
+
+      $proj = Project::create([
+        "name"                =>  "limigrations",
+        "short_description"   =>  "Lightweight migrations system for python / sqlite3.",
+        "date"                =>  "2017-03-8",
+        "date_alt"            =>  "March 2017",
+        "git"                 =>  "https://github.com/dragosthealex/limigrations",
+        "urls"                =>  "{'external': 'https://pypi.python.org/pypi/limigrations/1.0.0'}"
+      ]);
+      $this->addTags($proj, ['python']);
     }
 
     private function addTags($project, $tagsArr) {

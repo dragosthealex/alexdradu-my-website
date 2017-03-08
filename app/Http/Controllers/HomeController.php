@@ -16,7 +16,7 @@ class HomeController extends Controller
     public function index() {
       return view('home')
               ->with('tags', Tag::all())
-              ->with('projects', Project::with('tags')->get());
+              ->with('projects', Project::with('tags')->orderBy('date', 'DESC')->get());
     }
 
     /**
