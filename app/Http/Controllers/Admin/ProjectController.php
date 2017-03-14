@@ -41,49 +41,49 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(),[
-          'name'              =>  'required|max:250',
-          'short_description' =>  'required|max:200',
-          'date_alt'          =>  'max:200',
-          'git'               =>  'max:200',
-          'demo'              =>  'max:200',
-          'url1'              =>  'max:200'
-        ]);
+      $validator = Validator::make($request->all(),[
+        'name'              =>  'required|max:250',
+        'short_description' =>  'required|max:200',
+        'date_alt'          =>  'max:200',
+        'git'               =>  'max:200',
+        'demo'              =>  'max:200',
+        'url1'              =>  'max:200'
+      ]);
 
-        $project = new Project();
-        $project->name = $request->input('name');
-        $project->date = $request->input('date');
-        $project->date_alt = $request->input('date_alt');
-        $project->description = $request->input('description');
-        $project->short_description = $request->input('short_description');
-        $project->git = $request->input('git');
-        $project->setUrl('demo', $request->input('demo'));
-        $project->setUrl('external', $request->input('url1'));
-        $project->save();
-        foreach(explode(',', $request->input('tags')) as $tagName) {
-          $tag = Tag::where('name', strtolower($tagName))->first();
-          if(!$tag) {
-            $tag = new Tag();
-            $tag->name = $tagName;
-            $tag->save();
-          }
-          $id = $tag->id;
-          $project->tags()->attach($id);
+      $project = new Project();
+      $project->name = $request->input('name');
+      $project->date = $request->input('date');
+      $project->date_alt = $request->input('date_alt');
+      $project->description = $request->input('description');
+      $project->short_description = $request->input('short_description');
+      $project->git = $request->input('git');
+      $project->setUrl('demo', $request->input('demo'));
+      $project->setUrl('external', $request->input('url1'));
+      $project->save();
+      foreach(explode(',', $request->input('tags')) as $tagName) {
+        $tag = Tag::where('name', strtolower($tagName))->first();
+        if(!$tag) {
+          $tag = new Tag();
+          $tag->name = $tagName;
+          $tag->save();
         }
-        // Make dir for photos if not exists
-        if(!file_exists("photos/".Auth::id()."/projects/".$project->slug)) {
-          mkdir("photos/".Auth::id()."/projects/".$project->slug);
-        }
-        // Upload file
-        if($request->hasFile('cover')) {
-          $cover = $request->file('cover');
-          $cover->storeAs("photos/".Auth::id()."/projects/".$project->slug, "cover."
-              . $cover->getClientOriginalExtension());
-          $cover->move("photos/".Auth::id()."/projects/".$project->slug, "cover."
-              . $cover->getClientOriginalExtension());
-        }
+        $id = $tag->id;
+        $project->tags()->attach($id);
+      }
+      // Make dir for photos if not exists
+      if(!file_exists("photos/".Auth::id()."/projects/".$project->slug)) {
+        mkdir("photos/".Auth::id()."/projects/".$project->slug);
+      }
+      // Upload file
+      if($request->hasFile('cover')) {
+        $cover = $request->file('cover');
+        $cover->storeAs("photos/".Auth::id()."/projects/".$project->slug, "cover."
+            . $cover->getClientOriginalExtension());
+        $cover->move("photos/".Auth::id()."/projects/".$project->slug, "cover."
+            . $cover->getClientOriginalExtension());
+      }
 
-        return redirect()->to('settings/projects');
+      return redirect()->to('settings/projects');
     }
 
     /**
