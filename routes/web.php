@@ -22,6 +22,9 @@ Auth::routes();
 // Demo routes
 Route::group(['prefix' => '/demo'], function() {
   Route::get('/corridor-putin', 'DemoController@corridorPutin');
+  Route::get('/live-insights', function() {
+    return redirect()->to('/d/live-insights');
+  });
 });
 
 // Admin routes

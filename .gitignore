@@ -4,6 +4,7 @@
 /vendor
 /.idea
 /public/d/live-insights
+/public/ssl_tests
 Homestead.json
 Homestead.yaml
 .env
