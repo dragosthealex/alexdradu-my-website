@@ -5,6 +5,8 @@
 /.idea
 /public/d/live-insights
 /public/ssl_tests
+/public/photos/1/projects
+/public/archives
 Homestead.json
 Homestead.yaml
 .env
