@@ -3,7 +3,7 @@
 /storage/*.key
 /vendor
 /.idea
-/public/d/live-insights
+/public/d/
 /public/ssl_tests
 /public/photos/1/projects
 /public/archives
